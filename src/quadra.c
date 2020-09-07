@@ -45,3 +45,13 @@ char *getCep(Quadra info){
     QStuct* quadra = (QStuct*) info;
     return quadra->cep;
 }
+
+double getXQ(Quadra info){
+    QStuct* quadra = (QStuct*) info;
+    return quadra->x;
+}
+
+double getYQ(Quadra info){
+    QStuct* quadra = (QStuct*) info;
+    return quadra->y;
+}

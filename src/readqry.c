@@ -1,15 +1,19 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include <stdbool.h>
+#include "cidade.h"
+#include "svg.h"
 
 struct Default{
     double x, y, w, h, r;
     char cstrk[20], cep[20], id[20], verifica[20];
 };
 
-void leituraQRY(char saida[], char qry[]){
+void leituraQRY(char saida[], char qry[], Cidade cidade){
     char comando[5];
     struct Default def;
+    double x, y;
     char txtarq[100];
 
     sprintf(txtarq,"%s.txt",saida);
@@ -35,7 +39,6 @@ void leituraQRY(char saida[], char qry[]){
 
     while (!feof(arq)){
         fscanf(arq,"%s",comando);
-        printf("\n%s: ", comando);
 
         /* QRY CEP E EQUIPAMENTOS URBANOS */
 
@@ -46,7 +49,8 @@ void leituraQRY(char saida[], char qry[]){
 
         if(strcmp("crd?",comando)==0){
             fscanf(arq,"%s",def.id);
-            fprintf(txt,"%s: %s\n", comando,def.id);
+            fprintf(txt,"%s: %s\n", comando,def.id);            
+            crd(cidade, def.id, txtarq);
         }
 
         if(strcmp("cbq",comando)==0){
@@ -63,7 +67,7 @@ void leituraQRY(char saida[], char qry[]){
             fscanf(arq,"%s",def.verifica);
             if(strcmp("#",def.verifica)==0){
                 fscanf(arq,"%s %lf",def.id, &def.r);
-                fprintf("%s: %s %s %lf", comando, def.verifica, def.id, def.r);
+                fprintf(txt,"%s: %s %s %lf", comando, def.verifica, def.id, def.r);
             }
             else{
                 fscanf(arq,"%lf",&def.r);
@@ -73,7 +77,21 @@ void leituraQRY(char saida[], char qry[]){
 
         /* QRY FORMAS */
 
+
+        strcpy(comando,"nada");
     }
+
+    printf("%s\n",saida);
+
+    abrirSvg(saida);
+    
+    imprimeListaQ(getListaQuadra(cidade));
+    imprimeListaH(getListaHidrante(cidade));
+    imprimeListaS(getListaSemaforo(cidade));
+    imprimeListaF(getListaFormas(cidade));
+    imprimeListaRB(getListaRadio(cidade));
+
+    fecharSvg(saida);
 
     fclose(arq);
 }

@@ -9,7 +9,7 @@ typedef struct hidrante{
     double x, y; 
 } infosH;
 
-void imprimeHidrante(char id[], double x, double y, char fill[], char stroke[], char strokeWidth[], char saida[]){
+void imprimeHidrante(double x, double y, char fill[], char stroke[], char strokeWidth[], char saida[]){
     FILE *arq;
     arq = fopen(saida,"a");
 

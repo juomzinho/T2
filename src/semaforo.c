@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 #include "semaforo.h"
 
 typedef struct semaforo{
@@ -7,7 +8,7 @@ typedef struct semaforo{
     double x,y;
 }semaforoInfos;
 
-void imprimeSemaforo(char id[], double x, double y, char fill[], char stroke[], char strokeWidth[],char saida[]){
+void imprimeSemaforo(double x, double y, char fill[], char stroke[], char strokeWidth[],char saida[]){
     FILE *arq;
     arq = fopen(saida,"a");
     if (arq==NULL){

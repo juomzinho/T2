@@ -9,7 +9,16 @@ Lista hidrantes, lista quadras, lista formas, lista semaforos
 e lista radio*/
 Cidade iniciaCidade();
 
-
 Lista getListaQuadra(Cidade listas);
+
+Lista getListaFormas(Cidade listas);
+
+Lista getListaSemaforo(Cidade listas);
+
+Lista getListaRadio(Cidade listas);
+
+Lista getListaHidrante(Cidade listas);
+
+void removeListas(Cidade cidade);
 
 #endif

@@ -1,6 +1,7 @@
 #include <stdlib.h>
 #include <string.h>
 #include <stdio.h>
+#include "readqry.h"
 #include "readgeo.h"
 #include "lista.h"
 #include "cidade.h"
@@ -14,9 +15,9 @@ char *tratamento(char arqNome[]){
     for(i=strlen(arqNome);i>=0;i--) {
 		caractere = arqNome[i];
         if(caractere=='/') {
-        			y = strlen(arqNome)-i;
+        	y = strlen(arqNome)-i;
         	prefixo = (char*) malloc(y*sizeof(char));
-
+            
         	for(x=0;x<=y;x++){
             	prefixo[x] = arqNome[i+1];
             	i++; 
@@ -103,35 +104,30 @@ int main(int argc, char *argv[]){
         strcpy(arqqry,qry);
     }
     
-    pgeo = (char *) malloc ((strlen(nomeArq)+1)*sizeof(char));
     pgeo = tratamento(nomeArq);
 
     if (qry != NULL){
-        pqry = (char *) malloc ((strlen(qry)+1)*sizeof(char));
         pqry = tratamento(qry);
     }
 
     arqSvg = (char *) malloc((strlen(saida)+strlen(pgeo)+6)*sizeof(char));
     sprintf(arqSvg,"%s/%s.svg",saida,pgeo);
 
-
     leituraGeo(geo,arqSvg,cidade);
 
-
     parq = (char *) malloc((strlen(arqSvg)+strlen(pqry)+6)*sizeof(char));
-    sprintf(parq,"%s/%s-%s", saida, pgeo, pqry);
+    sprintf(parq,"%s/%s-%s.svg", saida, pgeo, pqry);
+
+    //percorreLista(l);
 
     Lista l = getListaQuadra(cidade);
     No node = getFirst(l);
     Info elemento = getInfo(node);
+    printf("%lf\n",getXQ(elemento));
+    
+    leituraQRY(parq, arqqry,cidade);
 
-    printf("Cep = %s\n", getCep(elemento));
-
-    node = getLast(l);
-    elemento = getInfo(node);
-
-    printf("Cep = %s\n", getCep(elemento));
-
+    removeListas(cidade);
     free(parq);
     free(arqSvg);
     if(qry != NULL){
@@ -143,5 +139,4 @@ int main(int argc, char *argv[]){
     free(path);
     free(qry);
     free(saida);
-    destroiListas(cidade);
 }

@@ -4,14 +4,14 @@
 	<circle cx="145.000000" cy="105.000000" r="4" fill="red" stroke="firebrick" stroke-width="1.0px"/>
 	<circle cx="25.000000" cy="105.000000" r="4" fill="red" stroke="firebrick" stroke-width="1.0px"/>
 	<circle cx="145.000000" cy="65.000000" r="4" fill="red" stroke="firebrick" stroke-width="1.0px"/>
-	<rect x="85.000000" y="65.000000" width="10" height="10" fill="magenta" stroke="lightblue" stroke-width="1.0px" />
+	<ellipse cx="85.000000" cy="65.000000" rx="7" ry="7" fill="magenta" stroke="lightblue" stroke-width="1.0px" />
 	<rect x="17.500000" y="17.500000" width="4" height="10" fill="lightred" stroke="yellow" stroke-width="1.0px" />
 	<rect x="160.000000" y="25.000000" width="120.000000" height="80.000000" fill="green" stroke="steelblue" stroke-width="1.0px"/>
 	<circle cx="220.000000" cy="105.000000" r="4" fill="red" stroke="firebrick" stroke-width="1.0px"/>
 	<circle cx="280.000000" cy="105.000000" r="4" fill="red" stroke="firebrick" stroke-width="1.0px"/>
 	<circle cx="160.000000" cy="105.000000" r="4" fill="red" stroke="firebrick" stroke-width="1.0px"/>
 	<circle cx="280.000000" cy="65.000000" r="4" fill="red" stroke="firebrick" stroke-width="1.0px"/>
-	<rect x="220.000000" y="65.000000" width="10" height="10" fill="magenta" stroke="lightblue" stroke-width="1.0px" />
+	<ellipse cx="220.000000" cy="65.000000" rx="7" ry="7" fill="magenta" stroke="lightblue" stroke-width="1.0px" />
 	<rect x="295.000000" y="25.000000" width="120.000000" height="80.000000" fill="green" stroke="steelblue" stroke-width="1.0px"/>
 	<circle cx="355.000000" cy="105.000000" r="4" fill="red" stroke="firebrick" stroke-width="1.0px"/>
 	<circle cx="415.000000" cy="105.000000" r="4" fill="red" stroke="firebrick" stroke-width="1.0px"/>
@@ -23,41 +23,41 @@
 	<circle cx="550.000000" cy="105.000000" r="4" fill="red" stroke="firebrick" stroke-width="1.0px"/>
 	<circle cx="430.000000" cy="105.000000" r="4" fill="red" stroke="firebrick" stroke-width="1.0px"/>
 	<circle cx="550.000000" cy="65.000000" r="4" fill="red" stroke="firebrick" stroke-width="1.0px"/>
-	<rect x="490.000000" y="65.000000" width="10" height="10" fill="magenta" stroke="lightblue" stroke-width="1.0px" />
+	<ellipse cx="490.000000" cy="65.000000" rx="7" ry="7" fill="magenta" stroke="lightblue" stroke-width="1.0px" />
 	<rect x="565.000000" y="25.000000" width="120.000000" height="80.000000" fill="green" stroke="steelblue" stroke-width="1.0px"/>
 	<circle cx="625.000000" cy="105.000000" r="4" fill="red" stroke="firebrick" stroke-width="1.0px"/>
 	<circle cx="685.000000" cy="105.000000" r="4" fill="red" stroke="firebrick" stroke-width="1.0px"/>
 	<circle cx="565.000000" cy="105.000000" r="4" fill="red" stroke="firebrick" stroke-width="1.0px"/>
 	<circle cx="685.000000" cy="65.000000" r="4" fill="red" stroke="firebrick" stroke-width="1.0px"/>
-	<rect x="625.000000" y="65.000000" width="10" height="10" fill="magenta" stroke="lightblue" stroke-width="1.0px" />
+	<ellipse cx="625.000000" cy="65.000000" rx="7" ry="7" fill="magenta" stroke="lightblue" stroke-width="1.0px" />
 	<rect x="557.500000" y="17.500000" width="4" height="10" fill="lightred" stroke="yellow" stroke-width="1.0px" />
 	<rect x="25.000000" y="120.000000" width="120.000000" height="80.000000" fill="green" stroke="steelblue" stroke-width="1.0px"/>
 	<circle cx="85.000000" cy="200.000000" r="4" fill="red" stroke="firebrick" stroke-width="1.0px"/>
 	<circle cx="145.000000" cy="200.000000" r="4" fill="red" stroke="firebrick" stroke-width="1.0px"/>
 	<circle cx="25.000000" cy="200.000000" r="4" fill="red" stroke="firebrick" stroke-width="1.0px"/>
 	<circle cx="145.000000" cy="160.000000" r="4" fill="red" stroke="firebrick" stroke-width="1.0px"/>
-	<rect x="85.000000" y="160.000000" width="10" height="10" fill="magenta" stroke="lightblue" stroke-width="1.0px" />
+	<ellipse cx="85.000000" cy="160.000000" rx="7" ry="7" fill="magenta" stroke="lightblue" stroke-width="1.0px" />
 	<rect x="17.500000" y="112.500000" width="4" height="10" fill="lightred" stroke="yellow" stroke-width="1.0px" />
 	<rect x="160.000000" y="120.000000" width="120.000000" height="80.000000" fill="green" stroke="steelblue" stroke-width="1.0px"/>
 	<circle cx="220.000000" cy="200.000000" r="4" fill="red" stroke="firebrick" stroke-width="1.0px"/>
 	<circle cx="280.000000" cy="200.000000" r="4" fill="red" stroke="firebrick" stroke-width="1.0px"/>
 	<circle cx="160.000000" cy="200.000000" r="4" fill="red" stroke="firebrick" stroke-width="1.0px"/>
 	<circle cx="280.000000" cy="160.000000" r="4" fill="red" stroke="firebrick" stroke-width="1.0px"/>
-	<rect x="220.000000" y="160.000000" width="10" height="10" fill="magenta" stroke="lightblue" stroke-width="1.0px" />
+	<ellipse cx="220.000000" cy="160.000000" rx="7" ry="7" fill="magenta" stroke="lightblue" stroke-width="1.0px" />
 	<rect x="152.500000" y="112.500000" width="4" height="10" fill="lightred" stroke="yellow" stroke-width="1.0px" />
 	<rect x="295.000000" y="120.000000" width="120.000000" height="80.000000" fill="green" stroke="steelblue" stroke-width="1.0px"/>
 	<circle cx="355.000000" cy="200.000000" r="4" fill="red" stroke="firebrick" stroke-width="1.0px"/>
 	<circle cx="415.000000" cy="200.000000" r="4" fill="red" stroke="firebrick" stroke-width="1.0px"/>
 	<circle cx="295.000000" cy="200.000000" r="4" fill="red" stroke="firebrick" stroke-width="1.0px"/>
 	<circle cx="415.000000" cy="160.000000" r="4" fill="red" stroke="firebrick" stroke-width="1.0px"/>
-	<rect x="355.000000" y="160.000000" width="10" height="10" fill="magenta" stroke="lightblue" stroke-width="1.0px" />
+	<ellipse cx="355.000000" cy="160.000000" rx="7" ry="7" fill="magenta" stroke="lightblue" stroke-width="1.0px" />
 	<rect x="287.500000" y="112.500000" width="4" height="10" fill="lightred" stroke="yellow" stroke-width="1.0px" />
 	<rect x="430.000000" y="120.000000" width="120.000000" height="80.000000" fill="green" stroke="steelblue" stroke-width="1.0px"/>
 	<circle cx="490.000000" cy="200.000000" r="4" fill="red" stroke="firebrick" stroke-width="1.0px"/>
 	<circle cx="550.000000" cy="200.000000" r="4" fill="red" stroke="firebrick" stroke-width="1.0px"/>
 	<circle cx="430.000000" cy="200.000000" r="4" fill="red" stroke="firebrick" stroke-width="1.0px"/>
 	<circle cx="550.000000" cy="160.000000" r="4" fill="red" stroke="firebrick" stroke-width="1.0px"/>
-	<rect x="490.000000" y="160.000000" width="10" height="10" fill="magenta" stroke="lightblue" stroke-width="1.0px" />
+	<ellipse cx="490.000000" cy="160.000000" rx="7" ry="7" fill="magenta" stroke="lightblue" stroke-width="1.0px" />
 	<rect x="422.500000" y="112.500000" width="4" height="10" fill="lightred" stroke="yellow" stroke-width="1.0px" />
 	<rect x="565.000000" y="120.000000" width="120.000000" height="80.000000" fill="green" stroke="steelblue" stroke-width="1.0px"/>
 	<circle cx="625.000000" cy="200.000000" r="4" fill="red" stroke="firebrick" stroke-width="1.0px"/>
@@ -70,20 +70,20 @@
 	<circle cx="145.000000" cy="295.000000" r="4" fill="red" stroke="firebrick" stroke-width="1.0px"/>
 	<circle cx="25.000000" cy="295.000000" r="4" fill="red" stroke="firebrick" stroke-width="1.0px"/>
 	<circle cx="145.000000" cy="255.000000" r="4" fill="red" stroke="firebrick" stroke-width="1.0px"/>
-	<rect x="85.000000" y="255.000000" width="10" height="10" fill="magenta" stroke="lightblue" stroke-width="1.0px" />
+	<ellipse cx="85.000000" cy="255.000000" rx="7" ry="7" fill="magenta" stroke="lightblue" stroke-width="1.0px" />
 	<rect x="17.500000" y="207.500000" width="4" height="10" fill="lightred" stroke="yellow" stroke-width="1.0px" />
 	<rect x="160.000000" y="215.000000" width="120.000000" height="80.000000" fill="green" stroke="steelblue" stroke-width="1.0px"/>
 	<circle cx="220.000000" cy="295.000000" r="4" fill="red" stroke="firebrick" stroke-width="1.0px"/>
 	<circle cx="280.000000" cy="295.000000" r="4" fill="red" stroke="firebrick" stroke-width="1.0px"/>
 	<circle cx="160.000000" cy="295.000000" r="4" fill="red" stroke="firebrick" stroke-width="1.0px"/>
 	<circle cx="280.000000" cy="255.000000" r="4" fill="red" stroke="firebrick" stroke-width="1.0px"/>
-	<rect x="220.000000" y="255.000000" width="10" height="10" fill="magenta" stroke="lightblue" stroke-width="1.0px" />
+	<ellipse cx="220.000000" cy="255.000000" rx="7" ry="7" fill="magenta" stroke="lightblue" stroke-width="1.0px" />
 	<rect x="295.000000" y="215.000000" width="120.000000" height="80.000000" fill="green" stroke="steelblue" stroke-width="1.0px"/>
 	<circle cx="355.000000" cy="295.000000" r="4" fill="red" stroke="firebrick" stroke-width="1.0px"/>
 	<circle cx="415.000000" cy="295.000000" r="4" fill="red" stroke="firebrick" stroke-width="1.0px"/>
 	<circle cx="295.000000" cy="295.000000" r="4" fill="red" stroke="firebrick" stroke-width="1.0px"/>
 	<circle cx="415.000000" cy="255.000000" r="4" fill="red" stroke="firebrick" stroke-width="1.0px"/>
-	<rect x="355.000000" y="255.000000" width="10" height="10" fill="magenta" stroke="lightblue" stroke-width="1.0px" />
+	<ellipse cx="355.000000" cy="255.000000" rx="7" ry="7" fill="magenta" stroke="lightblue" stroke-width="1.0px" />
 	<rect x="430.000000" y="215.000000" width="120.000000" height="80.000000" fill="green" stroke="steelblue" stroke-width="1.0px"/>
 	<circle cx="490.000000" cy="295.000000" r="4" fill="red" stroke="firebrick" stroke-width="1.0px"/>
 	<circle cx="550.000000" cy="295.000000" r="4" fill="red" stroke="firebrick" stroke-width="1.0px"/>
@@ -101,69 +101,69 @@
 	<circle cx="145.000000" cy="390.000000" r="4" fill="red" stroke="firebrick" stroke-width="1.0px"/>
 	<circle cx="25.000000" cy="390.000000" r="4" fill="red" stroke="firebrick" stroke-width="1.0px"/>
 	<circle cx="145.000000" cy="350.000000" r="4" fill="red" stroke="firebrick" stroke-width="1.0px"/>
-	<rect x="85.000000" y="350.000000" width="10" height="10" fill="magenta" stroke="lightblue" stroke-width="1.0px" />
+	<ellipse cx="85.000000" cy="350.000000" rx="7" ry="7" fill="magenta" stroke="lightblue" stroke-width="1.0px" />
 	<rect x="17.500000" y="302.500000" width="4" height="10" fill="lightred" stroke="yellow" stroke-width="1.0px" />
 	<rect x="160.000000" y="310.000000" width="120.000000" height="80.000000" fill="green" stroke="steelblue" stroke-width="1.0px"/>
 	<circle cx="220.000000" cy="390.000000" r="4" fill="red" stroke="firebrick" stroke-width="1.0px"/>
 	<circle cx="280.000000" cy="390.000000" r="4" fill="red" stroke="firebrick" stroke-width="1.0px"/>
 	<circle cx="160.000000" cy="390.000000" r="4" fill="red" stroke="firebrick" stroke-width="1.0px"/>
 	<circle cx="280.000000" cy="350.000000" r="4" fill="red" stroke="firebrick" stroke-width="1.0px"/>
-	<rect x="220.000000" y="350.000000" width="10" height="10" fill="magenta" stroke="lightblue" stroke-width="1.0px" />
+	<ellipse cx="220.000000" cy="350.000000" rx="7" ry="7" fill="magenta" stroke="lightblue" stroke-width="1.0px" />
 	<rect x="295.000000" y="310.000000" width="120.000000" height="80.000000" fill="green" stroke="steelblue" stroke-width="1.0px"/>
 	<circle cx="355.000000" cy="390.000000" r="4" fill="red" stroke="firebrick" stroke-width="1.0px"/>
 	<circle cx="415.000000" cy="390.000000" r="4" fill="red" stroke="firebrick" stroke-width="1.0px"/>
 	<circle cx="295.000000" cy="390.000000" r="4" fill="red" stroke="firebrick" stroke-width="1.0px"/>
 	<circle cx="415.000000" cy="350.000000" r="4" fill="red" stroke="firebrick" stroke-width="1.0px"/>
-	<rect x="355.000000" y="350.000000" width="10" height="10" fill="magenta" stroke="lightblue" stroke-width="1.0px" />
+	<ellipse cx="355.000000" cy="350.000000" rx="7" ry="7" fill="magenta" stroke="lightblue" stroke-width="1.0px" />
 	<rect x="287.500000" y="302.500000" width="4" height="10" fill="lightred" stroke="yellow" stroke-width="1.0px" />
 	<rect x="430.000000" y="310.000000" width="120.000000" height="80.000000" fill="green" stroke="steelblue" stroke-width="1.0px"/>
 	<circle cx="490.000000" cy="390.000000" r="4" fill="red" stroke="firebrick" stroke-width="1.0px"/>
 	<circle cx="550.000000" cy="390.000000" r="4" fill="red" stroke="firebrick" stroke-width="1.0px"/>
 	<circle cx="430.000000" cy="390.000000" r="4" fill="red" stroke="firebrick" stroke-width="1.0px"/>
 	<circle cx="550.000000" cy="350.000000" r="4" fill="red" stroke="firebrick" stroke-width="1.0px"/>
-	<rect x="490.000000" y="350.000000" width="10" height="10" fill="magenta" stroke="lightblue" stroke-width="1.0px" />
+	<ellipse cx="490.000000" cy="350.000000" rx="7" ry="7" fill="magenta" stroke="lightblue" stroke-width="1.0px" />
 	<rect x="422.500000" y="302.500000" width="4" height="10" fill="lightred" stroke="yellow" stroke-width="1.0px" />
 	<rect x="565.000000" y="310.000000" width="120.000000" height="80.000000" fill="green" stroke="steelblue" stroke-width="1.0px"/>
 	<circle cx="625.000000" cy="390.000000" r="4" fill="red" stroke="firebrick" stroke-width="1.0px"/>
 	<circle cx="685.000000" cy="390.000000" r="4" fill="red" stroke="firebrick" stroke-width="1.0px"/>
 	<circle cx="565.000000" cy="390.000000" r="4" fill="red" stroke="firebrick" stroke-width="1.0px"/>
 	<circle cx="685.000000" cy="350.000000" r="4" fill="red" stroke="firebrick" stroke-width="1.0px"/>
-	<rect x="625.000000" y="350.000000" width="10" height="10" fill="magenta" stroke="lightblue" stroke-width="1.0px" />
+	<ellipse cx="625.000000" cy="350.000000" rx="7" ry="7" fill="magenta" stroke="lightblue" stroke-width="1.0px" />
 	<rect x="557.500000" y="302.500000" width="4" height="10" fill="lightred" stroke="yellow" stroke-width="1.0px" />
 	<rect x="25.000000" y="405.000000" width="120.000000" height="80.000000" fill="green" stroke="steelblue" stroke-width="1.0px"/>
 	<circle cx="85.000000" cy="485.000000" r="4" fill="red" stroke="firebrick" stroke-width="1.0px"/>
 	<circle cx="145.000000" cy="485.000000" r="4" fill="red" stroke="firebrick" stroke-width="1.0px"/>
 	<circle cx="25.000000" cy="485.000000" r="4" fill="red" stroke="firebrick" stroke-width="1.0px"/>
 	<circle cx="145.000000" cy="445.000000" r="4" fill="red" stroke="firebrick" stroke-width="1.0px"/>
-	<rect x="85.000000" y="445.000000" width="10" height="10" fill="magenta" stroke="lightblue" stroke-width="1.0px" />
+	<ellipse cx="85.000000" cy="445.000000" rx="7" ry="7" fill="magenta" stroke="lightblue" stroke-width="1.0px" />
 	<rect x="17.500000" y="397.500000" width="4" height="10" fill="lightred" stroke="yellow" stroke-width="1.0px" />
 	<rect x="160.000000" y="405.000000" width="120.000000" height="80.000000" fill="green" stroke="steelblue" stroke-width="1.0px"/>
 	<circle cx="220.000000" cy="485.000000" r="4" fill="red" stroke="firebrick" stroke-width="1.0px"/>
 	<circle cx="280.000000" cy="485.000000" r="4" fill="red" stroke="firebrick" stroke-width="1.0px"/>
 	<circle cx="160.000000" cy="485.000000" r="4" fill="red" stroke="firebrick" stroke-width="1.0px"/>
 	<circle cx="280.000000" cy="445.000000" r="4" fill="red" stroke="firebrick" stroke-width="1.0px"/>
-	<rect x="220.000000" y="445.000000" width="10" height="10" fill="magenta" stroke="lightblue" stroke-width="1.0px" />
+	<ellipse cx="220.000000" cy="445.000000" rx="7" ry="7" fill="magenta" stroke="lightblue" stroke-width="1.0px" />
 	<rect x="152.500000" y="397.500000" width="4" height="10" fill="lightred" stroke="yellow" stroke-width="1.0px" />
 	<rect x="295.000000" y="405.000000" width="120.000000" height="80.000000" fill="green" stroke="steelblue" stroke-width="1.0px"/>
 	<circle cx="355.000000" cy="485.000000" r="4" fill="red" stroke="firebrick" stroke-width="1.0px"/>
 	<circle cx="415.000000" cy="485.000000" r="4" fill="red" stroke="firebrick" stroke-width="1.0px"/>
 	<circle cx="295.000000" cy="485.000000" r="4" fill="red" stroke="firebrick" stroke-width="1.0px"/>
 	<circle cx="415.000000" cy="445.000000" r="4" fill="red" stroke="firebrick" stroke-width="1.0px"/>
-	<rect x="355.000000" y="445.000000" width="10" height="10" fill="magenta" stroke="lightblue" stroke-width="1.0px" />
+	<ellipse cx="355.000000" cy="445.000000" rx="7" ry="7" fill="magenta" stroke="lightblue" stroke-width="1.0px" />
 	<rect x="287.500000" y="397.500000" width="4" height="10" fill="lightred" stroke="yellow" stroke-width="1.0px" />
 	<rect x="430.000000" y="405.000000" width="120.000000" height="80.000000" fill="green" stroke="steelblue" stroke-width="1.0px"/>
 	<circle cx="490.000000" cy="485.000000" r="4" fill="red" stroke="firebrick" stroke-width="1.0px"/>
 	<circle cx="550.000000" cy="485.000000" r="4" fill="red" stroke="firebrick" stroke-width="1.0px"/>
 	<circle cx="430.000000" cy="485.000000" r="4" fill="red" stroke="firebrick" stroke-width="1.0px"/>
 	<circle cx="550.000000" cy="445.000000" r="4" fill="red" stroke="firebrick" stroke-width="1.0px"/>
-	<rect x="490.000000" y="445.000000" width="10" height="10" fill="magenta" stroke="lightblue" stroke-width="1.0px" />
+	<ellipse cx="490.000000" cy="445.000000" rx="7" ry="7" fill="magenta" stroke="lightblue" stroke-width="1.0px" />
 	<rect x="422.500000" y="397.500000" width="4" height="10" fill="lightred" stroke="yellow" stroke-width="1.0px" />
 	<rect x="565.000000" y="405.000000" width="120.000000" height="80.000000" fill="green" stroke="steelblue" stroke-width="1.0px"/>
 	<circle cx="625.000000" cy="485.000000" r="4" fill="red" stroke="firebrick" stroke-width="1.0px"/>
 	<circle cx="685.000000" cy="485.000000" r="4" fill="red" stroke="firebrick" stroke-width="1.0px"/>
 	<circle cx="565.000000" cy="485.000000" r="4" fill="red" stroke="firebrick" stroke-width="1.0px"/>
 	<circle cx="685.000000" cy="445.000000" r="4" fill="red" stroke="firebrick" stroke-width="1.0px"/>
-	<rect x="625.000000" y="445.000000" width="10" height="10" fill="magenta" stroke="lightblue" stroke-width="1.0px" />
+	<ellipse cx="625.000000" cy="445.000000" rx="7" ry="7" fill="magenta" stroke="lightblue" stroke-width="1.0px" />
 	<rect x="557.500000" y="397.500000" width="4" height="10" fill="lightred" stroke="yellow" stroke-width="1.0px" />
 	<circle cx="0.000000" cy="495.000000" r="2.500000" fill="darkorange" stroke="black" />
 	<circle cx="6.500000" cy="495.000000" r="2.500000" fill="darkorange" stroke="black" />

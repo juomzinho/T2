@@ -129,8 +129,8 @@ void leituraGeo(char geo[],char saida[], Cidade cidade){
             if(strcmp("h",comando)==0){
                 if(cont.nh<nx.nh){
                     fscanf(arq,"%s %lf %lf", def.id, &def.x, &def.y);
-                    imprimeHidrante(def.id, def.x, def.y, ch.cfill, ch.cstrk, ch.sw, saida);
-                    hidrante = hidranteLista(def.id, def.x, def.y, ch.cfill, ch.cstrk, ch.sw);
+                    imprimeHidrante(def.x, def.y, ch.cfill, ch.cstrk, ch.sw, saida);
+                    hidrante = hidranteLista( def.id, def.x, def.y, ch.cfill, ch.cstrk, ch.sw);
                     insere(listas->listaH,hidrante);
                     cont.nh++;
                 }
@@ -138,7 +138,7 @@ void leituraGeo(char geo[],char saida[], Cidade cidade){
             if(strcmp("s",comando)==0){
                 if(cont.ns<nx.ns){
                     fscanf(arq,"%s %lf %lf", def.id, &def.x, &def.y);
-                    imprimeSemaforo(def.id, def.x, def.y, cs.cfill, cs.cstrk, cs.sw, saida);
+                    imprimeSemaforo( def.x, def.y, cs.cfill, cs.cstrk, cs.sw, saida);
                     semaforo = semaforoLista(def.id, def.x, def.y, cs.cfill, cs.cstrk, cs.sw);
                     insere(listas->listaS,semaforo);
                     cont.ns++;
@@ -147,7 +147,7 @@ void leituraGeo(char geo[],char saida[], Cidade cidade){
             if(strcmp("rb",comando)==0){
                 if(cont.nr<nx.nr){
                     fscanf(arq,"%s %lf %lf", def.id, &def.x, &def.y);
-                    imprimeRadio(def.id, def.x, def.y, cr.cfill, cr.cstrk, cr.sw, saida);
+                    imprimeRadio(def.x, def.y, cr.cfill, cr.cstrk, cr.sw, saida);
                     radio = radioLista(def.id, def.x, def.y, cr.cfill, cr.cstrk, cr.sw);
                     insere(listas->listaRB,radio);
                     cont.nr++;
@@ -158,14 +158,18 @@ void leituraGeo(char geo[],char saida[], Cidade cidade){
             if(strcmp("c",comando)==0){
                 if(cont.i<nx.i){
                     fscanf(arq,"%d %lf %lf %lf %s %s",&forma.id, &forma.raio, &forma.x, &forma.y, forma.corb, forma.corp); 
-                    imprimeCirculo(forma.id, forma.raio, forma.x, forma.y, forma.corb, forma.corp, saida);
+                    imprimeCirculo(forma.raio, forma.x, forma.y, forma.corb, forma.corp, saida);
+                    crt = circuloLista(forma.id, forma.raio, forma.x, forma.y, forma.corb, forma.corp);
+                    insere(listas->listaF,crt);
                     cont.i++;
                 }
             }
             if(strcmp("r",comando)==0){
                 if(cont.i<nx.i){
                     fscanf(arq,"%d %lf %lf %lf %lf %s %s",&forma.id, &forma.w, &forma.h, &forma.x, &forma.y, forma.corb, forma.corp);
-                    imprimeRetangulo(forma.id, forma.w, forma.h, forma.x, forma.y, forma.corb, forma.corp, saida);
+                    imprimeRetangulo(forma.w, forma.h, forma.x, forma.y, forma.corb, forma.corp, saida);
+                    crt = retanguloLista(forma.id, forma.w, forma.h, forma.x, forma.y, forma.corb, forma.corp);
+                    insere(listas->listaF,crt);
                     cont.i++;
                 }
             }
@@ -173,7 +177,9 @@ void leituraGeo(char geo[],char saida[], Cidade cidade){
                 if(cont.i<nx.i){
                     fscanf(arq,"%d %lf %lf %s %s",&forma.id, &forma.x, &forma.y, forma.corb, forma.corp);
                     getline(&texto,&len,arq);
-                    imprimeTexto(forma.id, forma.x, forma.y, forma.corb, forma.corp, forma.text, saida);
+                    imprimeTexto(forma.x, forma.y, forma.corb, forma.corp, forma.text, saida);
+                    crt = textoLista(forma.id, forma.x, forma.y, forma.corb, forma.corp, forma.text);
+                    insere(listas->listaF,crt);
                     cont.i++;
                 }
             }

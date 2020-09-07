@@ -9,4 +9,8 @@ Quadra quadraLista(char cep[], double x, double y, double w, double h, char fill
 
 char *getCep(Quadra info);
 
+double getXQ(Quadra info);
+
+double getYQ(Quadra info);
+
 #endif

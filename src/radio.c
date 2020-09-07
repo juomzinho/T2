@@ -8,7 +8,7 @@ typedef struct radio{
     double x, y;
 }radioStruct;
 
-void imprimeRadio(char id[], double x, double y, char fill[], char stroke[], char strokeWidth[],char saida[]){
+void imprimeRadio(double x, double y, char fill[], char stroke[], char strokeWidth[],char saida[]){
     FILE *arq;
     arq = fopen(saida,"a");
     if (arq==NULL){
@@ -16,7 +16,7 @@ void imprimeRadio(char id[], double x, double y, char fill[], char stroke[], cha
         exit(1);
     }
 
-    fprintf(arq,"\n\t<rect x=\"%lf\" y=\"%lf\" width=\"10\" height=\"10\" fill=\"%s\" stroke=\"%s\" stroke-width=\"%s\" />", x,y,fill, stroke, strokeWidth);
+    fprintf(arq,"\n\t<ellipse cx=\"%lf\" cy=\"%lf\" rx=\"7\" ry=\"7\" fill=\"%s\" stroke=\"%s\" stroke-width=\"%s\" />", x,y,fill, stroke, strokeWidth);
 
     fclose(arq);
 }

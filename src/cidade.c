@@ -5,7 +5,6 @@
 #include "cidade.h"
 
 typedef struct cid{
-    
     Lista listaQ;
     Lista listaS;
     Lista listaH;
@@ -35,4 +34,37 @@ Cidade getListaHidrante(Cidade listas){
 Lista getListaQuadra(Cidade listas){
     CidadeStruct* l = (CidadeStruct*) listas;
     return l->listaQ;
+}
+
+Lista getListaFormas(Cidade listas){
+    CidadeStruct* l = (CidadeStruct*) listas;
+    return l->listaF;
+}
+
+Lista getListaSemaforo(Cidade listas){
+    CidadeStruct* l = (CidadeStruct*) listas;
+    return l->listaS;
+}
+
+Lista getListaRadio(Cidade listas){
+    CidadeStruct* l = (CidadeStruct*) listas;
+    return l->listaRB;
+}
+
+
+void removeListas(Cidade cidade){
+    CidadeStruct* list = (CidadeStruct*) cidade;
+
+    desalocaLista(list->listaF);
+    desalocaLista(list->listaH);
+    desalocaLista(list->listaS);
+    desalocaLista(list->listaRB);
+    desalocaLista(list->listaQ);
+
+    free(list->listaF);
+    free(list->listaS);
+    free(list->listaRB);
+    free(list->listaH);
+    free(list->listaQ);
+    free(list);
 }
