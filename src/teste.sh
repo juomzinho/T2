@@ -33,6 +33,11 @@
 ./siguel -f b2-bsc-001.geo -o ../out -e ../testes -q /b2-bsc-001/dq-02.qry
 
 ./siguel -f b4-bsc-001.geo -o ../out -e ../testes -q /b4-bsc-001/car.qry
+./siguel -f b4-bsc-001.geo -o ../out -e ../testes -q /b4-bsc-001/carcima.qry
+./siguel -f b4-bsc-001.geo -o ../out -e ../testes -q /b4-bsc-001/carbaixo.qry
+./siguel -f b4-bsc-001.geo -o ../out -e ../testes -q /b4-bsc-001/cardir.qry
+./siguel -f b4-bsc-001.geo -o ../out -e ../testes -q /b4-bsc-001/cbq-1.qry
+./siguel -f b4-bsc-001.geo -o ../out -e ../testes -q /b4-bsc-001/cbq-2.qry
 
 ./siguel -f b8-bsc-001.geo -o ../out -e ../testes -q /b8-bsc-001/car.qry
 ./siguel -f b8-bsc-001.geo -o ../out -e ../testes -q /b8-bsc-001/carcima.qry

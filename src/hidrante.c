@@ -39,3 +39,50 @@ char *getIdHidrante(Hidrante info){
     infosH* hidrante = (infosH*) info;
     return hidrante->id;
 }
+
+double getXH(Hidrante info){
+    infosH* hidrante = (infosH*) info;
+    return hidrante->x;
+}
+
+double getYH(Hidrante info){
+    infosH* hidrante = (infosH*) info;
+    return hidrante->y;
+}
+
+char *getFillH(Hidrante info){
+    infosH* hidrante = (infosH*) info;
+    return hidrante->fill;
+}
+
+char *getStrokeH(Hidrante info){
+    infosH* hidrante = (infosH*) info;
+    return hidrante->strk;
+}
+
+char *getSWH(Hidrante info){
+    infosH* hidrante = (infosH*) info;
+    return hidrante->sw;
+}
+
+
+void imprimeListaH(Lista l,char saida[]){
+    No node = getFirst(l), aux = getLast(l);
+    Info elemento = getInfo(node);
+    infosH def;
+
+    do{
+        elemento = getInfo(node);
+
+        strcpy(def.id, getIdHidrante(elemento));
+        def.x = getXH(elemento);
+        def.y = getYH(elemento);
+        strcpy(def.fill, getFillH(elemento));
+        strcpy(def.strk, getStrokeH(elemento));
+        strcpy(def.sw, getSWH(elemento));
+        imprimeHidrante(def.x, def.y, def.fill, def.strk, def.sw, saida);
+        
+        node = getNext(node);
+    } while (node!=getNext(aux));
+    
+}

@@ -33,3 +33,54 @@ Radio radioLista(char id[], double x, double y, char fill[], char strk[], char s
 
     return radio;
 }
+
+char *getIdR(Info elemento){
+    radioStruct* info = (radioStruct*) elemento;
+    return info->id;
+}
+
+double getXR(Info elemento){
+    radioStruct* info = (radioStruct*) elemento;
+    return info->x;
+}
+
+double getYR(Info elemento){
+    radioStruct* info = (radioStruct*) elemento;
+    return info->y;
+}
+
+char *getFillR(Info elemento){
+    radioStruct* info = (radioStruct*) elemento;
+    return info->fill;
+}
+
+char *getStokeR(Info elemento){
+    radioStruct* info = (radioStruct*) elemento;
+    return info->stroke;
+}
+
+char *getSWR(Info elemento){
+    radioStruct* info = (radioStruct*) elemento;
+    return info->sw;
+}
+
+
+void imprimeListaRB(Lista l, char saida[]){
+    No node = getFirst(l), aux = getLast(l);
+    Info elemento;
+    radioStruct def;
+
+    do{
+        elemento = getInfo(node);
+
+        def.x = getXR(elemento);
+        def.y = getYR(elemento);
+        strcpy(def.fill, getFillR(elemento));
+        strcpy(def.stroke, getStokeR(elemento));
+        strcpy(def.sw, getSWR(elemento));
+        imprimeRadio(def.x, def.y, def.fill, def.stroke, def.sw, saida);
+
+        node = getNext(node); 
+    } while (node != getNext(aux));
+    
+}

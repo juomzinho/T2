@@ -2,6 +2,7 @@
 #include <string.h>
 #include <stdlib.h>
 #include "quadra.h"
+#include "lista.h"
 
 typedef struct quadra{
     char cep[20], fill[10], stroke[10], strokeWidth[10];
@@ -54,4 +55,65 @@ double getXQ(Quadra info){
 double getYQ(Quadra info){
     QStuct* quadra = (QStuct*) info;
     return quadra->y;
+}
+
+double getWQ(Quadra info){
+    QStuct* quadra = (QStuct*) info;
+    return quadra->w;
+}
+
+double getHQ(Quadra info){
+    QStuct* quadra = (QStuct*) info;
+    return quadra->h;
+}
+
+char *getFillQ(Quadra info){
+    QStuct* quadra = (QStuct*) info;
+    return quadra->fill;
+}
+
+char *getStrokeQ(Quadra info){
+    QStuct* quadra = (QStuct*) info;
+    return quadra->stroke;
+}
+
+char *getSWQ(Quadra info){
+    QStuct* quadra = (QStuct*) info;
+    return quadra->strokeWidth;
+}
+
+double getAreaQuadra(Quadra info){
+    QStuct* quadra = (QStuct*) info;
+    return (quadra->w * quadra->h);
+}
+
+void setStokeQ(char strk[],Quadra elemento){
+    QStuct* quadra = (QStuct*) elemento;
+    strcpy(quadra->stroke,strk);
+}
+
+void imprimeListaQ(Lista l, char saida[]){
+    No node = getFirst(l), aux = getLast(l);
+    Info elemento;
+    QStuct def;
+
+    node = getNext(node);
+    node = getPrevious(node);
+    
+    do{
+        elemento = getInfo(node);
+
+        strcpy(def.cep,getCep(elemento));
+        def.x = getXQ(elemento);
+        def.y = getYQ(elemento);
+        def.h = getHQ(elemento);
+        def.w = getWQ(elemento);
+        strcpy(def.stroke,getStrokeQ(elemento));
+        strcpy(def.fill,getFillQ(elemento));
+        strcpy(def.strokeWidth,getSWQ(elemento));
+
+        imprimeQuadra(def.cep, def.x, def.y, def.w, def.h, def.fill, def.stroke, def.strokeWidth,saida);
+        node = getNext(node);
+    } while (node!=getNext(aux));
+    
 }

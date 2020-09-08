@@ -14,8 +14,14 @@ Lista create();
 ela recebe como parametro a lista e o elemento que sera adicionado na lista */
 void insere(Lista l, Info info);
 
+/* Esta funcao insere um elemento depois de outro elemento
+   ela recebe como parametro a lista, o elemento que servirá
+   de base para a inserção e o novo elemento */
 void insertAfter(Lista l, Info posicao, Info info);
 
+/* Esta funcao insere um elemento antes de outro elemento
+   ela recebe como parametro a lista, o elemento que servirá
+   de base para a inserção e o novo elemento */
 void insertBefore(Lista l, Info posicao, Info info);
 
 /* Esta funcao retorna a quantidade de elementos contidos em uma lista
@@ -50,13 +56,6 @@ No getPrevious(No elemento);
 ela recebe como parametro um elemento da lista
 e retorna as informações deste elemento*/ 
 No getInfo(No elemento);
-
-void percorreLista(Lista l);
-
-/* Esta funcao remove um elemento da lista baseado por seu cep
-ela recebe como parametro uma lista e o cep que será buscado
-e removido */
-void removePorCep(Lista l, char cep[]);
 
 /* Esta funcao desaloca uma lista da memoria
 ela recebe a lista a ser desalocada por parametro */

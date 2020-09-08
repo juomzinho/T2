@@ -2,7 +2,6 @@
 #include <stdlib.h>
 #include <string.h>
 #include "lista.h"
-#include "quadra.h"
 
 typedef struct node{
     Info info;
@@ -55,12 +54,12 @@ void insertAfter(Lista l, Info posicao, Info info){
     no->info = info;
 
     while (aux!=NULL){
-        if (aux==posicao){
+        if (getInfo(aux)==posicao){
             no->proximo = aux->proximo;
             no->anterior = aux;
             aux->proximo = no;
         }
-        aux = aux->proximo;
+        aux = getNext(aux);
     }
     
 }
@@ -74,14 +73,13 @@ void insertBefore(Lista l, Info posicao, Info info){
     no->info = info;
 
     while (aux!=NULL){
-        if (aux==posicao){
+        if (getInfo(aux)==posicao){
             no->anterior = aux->anterior;
-            no->proximo = aux;
+            no->proximo = aux; 
             aux->anterior = no;   
             if (no->anterior==NULL){
                 lista->primeiro = no;
-            }
-                     
+            }                     
         }
         aux = aux->proximo;
     }
@@ -100,35 +98,6 @@ int length(Lista l){
     return i;
 }
 
-void removeElemento(Lista l, Info info){
-    ListaStruct* lista = (ListaStruct*) l;
-    NoStruct *aux, *aux2;
-    aux = lista->primeiro;
-    
-    while (aux!=NULL){
-        if(aux->info == info){
-            if (aux==lista->primeiro){
-                lista->primeiro = aux->proximo;
-                lista->primeiro->anterior = NULL;
-            }
-            if(aux==lista->ultimo){
-                lista->ultimo = aux->anterior;
-                lista->ultimo->proximo = NULL;
-            }
-
-            aux2 = aux->proximo;
-            aux2->anterior = aux->anterior;
-
-            if(aux->anterior!=NULL){
-                aux->anterior->proximo = aux2;
-            }
-            free(aux->info);
-            free(aux);
-            break;
-         }
-        aux = aux->proximo;
-    }  
-}
 
 No getFirst(Lista lista){
     ListaStruct* l = (ListaStruct*) lista;
@@ -155,31 +124,6 @@ Info getInfo(No elemento){
     return no->info;
 }
 
-void percorreLista(Lista l){
-    ListaStruct* lista = (ListaStruct*) l;
-    NoStruct* aux = lista->primeiro;
-
-    while (aux!=NULL){
-        printf("cep = %s\n", getCep(aux->info));
-        aux = aux->proximo;
-    }
-    
-}
-
-void removePorCep(Lista l, char cep[]){
-    ListaStruct* lista = (ListaStruct*) l;
-    NoStruct* aux = lista->primeiro;
-    while (aux!=NULL){
-        if(strcmp(getCep(aux->info),cep)==0){
-            printf("%s %s", cep, getCep(aux->info));
-            removeElemento(lista, aux->info);
-            break;
-        }
-        aux = aux->proximo;
-    }
-    
-}
-
 void desalocaLista(Lista l){
     ListaStruct* lista = (ListaStruct*) l;
     NoStruct *aux, *aux2;
@@ -194,3 +138,33 @@ void desalocaLista(Lista l){
     }   
 }
 
+void removeElemento(Lista l, Info info){
+    ListaStruct* lista = (ListaStruct*) l;
+    NoStruct *aux, *aux2;
+    aux = lista->primeiro;
+    
+    while (aux!=NULL){
+        if(aux->info == info){
+            if (aux==lista->primeiro){
+                lista->primeiro = aux->proximo;
+                lista->primeiro->anterior = NULL;
+            }
+            if(aux==lista->ultimo){
+                lista->ultimo = aux->anterior;
+                lista->ultimo->proximo = NULL;
+            }
+
+            aux2 = aux->proximo;
+            aux2->anterior = aux->anterior;
+
+            if(aux->anterior!=NULL){
+                aux->anterior->proximo = aux2;
+            }
+            
+            free(aux->info);
+            free(aux);
+            break;
+         }
+        aux = aux->proximo;
+    }  
+}

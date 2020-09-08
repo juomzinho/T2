@@ -19,6 +19,8 @@ Lista getListaRadio(Cidade listas);
 
 Lista getListaHidrante(Cidade listas);
 
+Lista getListaQRY(Cidade listas);
+
 void removeListas(Cidade cidade);
 
 #endif

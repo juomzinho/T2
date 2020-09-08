@@ -4,23 +4,11 @@
 #include <string.h>
 #include "formas.h"
 
-typedef struct circulo{
+typedef struct f{
     int id;
-    double raio, x, y;
-    char corb[20], corp[20], forma;
-}circuloStruct;
-
-typedef struct retangulo{
-    int id;
-    double w, h, x, y;
-    char corb[20], corp[20], forma;
-}retanguloStruct;
-
-typedef struct texto{
-    int id;
-    double x, y;
-    char corb[20], corp[20], texto[50], forma;
-}textoStruct;
+    double raio, x, y, w, h;
+    char corb[20], corp[20], texto[50],forma;
+}formasStruct;
 
 void imprimeCirculo(double raio, double x, double y, char corb[], char corp[],char saida[]){
     FILE *arqsvg;
@@ -62,7 +50,7 @@ void imprimeTexto(double x, double y, char corb[],char corp[], char texto[],char
 }
 
 Formas circuloLista(int id, double raio, double x, double y, char corb[], char corp[]){
-    circuloStruct* circ = (circuloStruct*) malloc(sizeof(circuloStruct));
+    formasStruct* circ = (formasStruct*) malloc(sizeof(formasStruct));
 
     circ->id = id;
     circ->raio = raio;
@@ -76,7 +64,7 @@ Formas circuloLista(int id, double raio, double x, double y, char corb[], char c
 }
 
 Formas retanguloLista(int id, double w, double h, double x, double y, char corb[], char corp[]){
-    retanguloStruct* ret = (retanguloStruct*) malloc(sizeof(retanguloStruct));
+    formasStruct* ret = (formasStruct*) malloc(sizeof(formasStruct));
 
     ret->id = id;
     ret->x = x;
@@ -91,7 +79,7 @@ Formas retanguloLista(int id, double w, double h, double x, double y, char corb[
 }
 
 Formas textoLista(int id, double x, double y, char corb[], char corp[], char text[]){
-    textoStruct* txt = (textoStruct*) malloc(sizeof(textoStruct));
+    formasStruct* txt = (formasStruct*) malloc(sizeof(formasStruct));
     
     txt->id = id;
     txt->x = x;
@@ -102,4 +90,100 @@ Formas textoLista(int id, double x, double y, char corb[], char corp[], char tex
     txt->forma = 't';
 
     return txt;
+}
+
+int getIdF(Info elemento){
+    formasStruct* info = (formasStruct*) elemento;
+    return info->id;
+}
+
+char getForma(Info elemento){
+    formasStruct* info = (formasStruct*) elemento;
+    return info->forma;
+}
+
+double getXF(Info elemento){
+    formasStruct* info = (formasStruct*) elemento;
+    return info->x;
+}
+
+double getYF(Info elemento){
+    formasStruct* info = (formasStruct*) elemento;
+    return info->y;
+}
+
+double getWF(Info elemento){
+    formasStruct* info = (formasStruct*) elemento;
+    return info->w;
+}
+
+double getHF(Info elemento){
+    formasStruct* info = (formasStruct*) elemento;
+    return info->h;
+}
+
+
+
+double getRaioF(Info elemento){
+    formasStruct* info = (formasStruct*) elemento;
+    return info->raio;
+}
+
+char *getFillF(Info elemento){
+    formasStruct* info = (formasStruct*) elemento;
+    return info->corp;
+}
+
+char *getStrokeF(Info elemento){
+    formasStruct* info = (formasStruct*) elemento;
+    return info->corb;
+}
+
+char *getTextoF(Info elemento){
+    formasStruct* info = (formasStruct*) elemento;
+    return info->texto;
+}
+
+void imprimeListaF(Lista l,char saida[]){
+    No node = getFirst(l), aux = getLast(l);
+    Info elemento;
+    char forma;
+    formasStruct def;
+
+    do{
+        elemento = getInfo(node);
+        forma = getForma(elemento);
+
+        if (forma=='c'){
+            def.x = getXF(elemento);
+            def.y = getYF(elemento);
+            def.raio = getRaioF(elemento);
+            strcpy(def.corb,getStrokeF(elemento));
+            strcpy(def.corp,getFillF(elemento));
+
+            imprimeCirculo(def.raio, def.x, def.y, def.corb, def.corp, saida);
+        }
+        if (forma=='r'){
+            def.x = getXF(elemento);
+            def.y = getYF(elemento);
+            def.w = getWF(elemento);
+            def.h = getHF(elemento);
+            strcpy(def.corb,getStrokeF(elemento));
+            strcpy(def.corp,getFillF(elemento));
+
+            imprimeRetangulo(def.w, def.h, def.x, def.y, def.corb, def.corp, saida);
+        }
+        if (forma=='t'){
+            def.x = getXF(elemento);
+            def.y = getYF(elemento);
+            strcpy(def.corb,getStrokeF(elemento));
+            strcpy(def.corp,getFillF(elemento));
+            strcpy(def.texto,getTextoF(elemento));
+
+            imprimeTexto(def.x, def.y,def.corb, def.corp, def.texto, saida);
+        }
+
+        node = getNext(node);
+    } while (node!=getNext(aux));
+    
 }

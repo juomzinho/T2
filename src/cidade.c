@@ -10,7 +10,7 @@ typedef struct cid{
     Lista listaH;
     Lista listaRB;
     Lista listaF;
-
+    Lista listaqry;
 } CidadeStruct;
 
 Cidade iniciaCidade(){
@@ -22,6 +22,7 @@ Cidade iniciaCidade(){
     list->listaRB = create();
     list->listaQ = create();
     list->listaH = create();
+    list->listaqry = create();
 
     return list;
 }
@@ -51,6 +52,10 @@ Lista getListaRadio(Cidade listas){
     return l->listaRB;
 }
 
+Lista getListaQRY(Cidade listas){
+    CidadeStruct* l = (CidadeStruct*) listas;
+    return l->listaqry;
+}
 
 void removeListas(Cidade cidade){
     CidadeStruct* list = (CidadeStruct*) cidade;
@@ -60,11 +65,13 @@ void removeListas(Cidade cidade){
     desalocaLista(list->listaS);
     desalocaLista(list->listaRB);
     desalocaLista(list->listaQ);
+    desalocaLista(list->listaqry);
 
     free(list->listaF);
     free(list->listaS);
     free(list->listaRB);
     free(list->listaH);
     free(list->listaQ);
+    free(list->listaqry);
     free(list);
 }

@@ -2,6 +2,7 @@
 #include <stdlib.h>
 #include <string.h>
 #include "semaforo.h"
+#include "lista.h"
 
 typedef struct semaforo{
     char id[20], fill[10], stroke[10], sw[10];
@@ -32,4 +33,55 @@ Semaforo semaforoLista(char id[], double x, double y, char fill[], char strk[], 
     strcpy(semaforo->sw,sw);
 
     return semaforo;
+}
+
+char *getIdS(Info elemento){
+    semaforoInfos* info = (semaforoInfos*) elemento;
+    return info->id;
+}
+
+double getXS(Info elemento){
+    semaforoInfos* info = (semaforoInfos*) elemento;
+    return info->x;
+}
+
+double getYS(Info elemento){
+    semaforoInfos* info = (semaforoInfos*) elemento;
+    return info->y;
+}
+
+char *getFillS(Info elemento){
+    semaforoInfos* info = (semaforoInfos*) elemento;
+    return info->fill;
+}
+
+char *getStrokeS(Info elemento){
+    semaforoInfos* info = (semaforoInfos*) elemento;
+    return info->stroke;
+}
+
+char *getSWS(Info elemento){
+    semaforoInfos* info = (semaforoInfos*) elemento;
+    return info->sw;
+}
+
+void imprimeListaS(Lista l, char saida[]){
+    No node = getFirst(l), aux = getLast(l);
+    Info elemento;
+    semaforoInfos def;
+
+    do{
+        elemento = getInfo(node);
+
+        def.x = getXS(elemento);
+        def.y = getYS(elemento);
+        strcpy(def.fill, getFillS(elemento));
+        strcpy(def.stroke, getStrokeS(elemento));
+        strcpy(def.sw, getSWS(elemento));
+        imprimeSemaforo(def.x,def.y,def.fill,def.stroke,def.sw,saida);
+
+        node = getNext(node);  
+    } while (node!=getNext(aux));
+    
+
 }

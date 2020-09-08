@@ -33,7 +33,9 @@ typedef struct cid{
     Lista listaH;
     Lista listaRB;
     Lista listaF;
-} CidadeStruct;typedef struct quadra{
+} CidadeStruct;
+
+typedef struct quadra{
     char cep[20], fill[10], stroke[10], strokeWidth[10];
     double x, y, w, h;
 } QStuct;
