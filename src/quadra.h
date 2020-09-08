@@ -26,7 +26,7 @@ char *getSWQ(Quadra info);
 
 double getAreaQuadra(Quadra info);
 
-void setStokeQ(cstrk, elemento);
+void setStokeQ(char cstrk[], Quadra elemento);
 
 void imprimeListaQ(Lista l, char saida[]);
 
