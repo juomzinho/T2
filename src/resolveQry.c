@@ -437,10 +437,9 @@ void dq(Cidade listas, char id[], double r, bool verifica, char txtarq[])
                                 if (PontoInterno(x2, y2, x, y, r) == true)
                                 {
                                     criaRetanguloQry(getXQ(elementoq), getYQ(elementoq), getWQ(elementoq), getHQ(elementoq), getSWQ(elementoq), getListaQRY(listas));
-                                    aux = getNext(aux);
+                                    aux = getPrevious(aux);
                                     fprintf(txt, "Cep: %s Id: %s X: %lf Y: %lf Fill: %s Stroke: %s\n\n", getCep(elementoq), getIdHidrante(elemento), getXH(elemento), getYH(elemento), getFillH(elemento), getStrokeH(elemento));
                                     removeElemento(listaq, elementoq);
-                                    aux = getPrevious(aux);
                                 }
                             }
                         }
@@ -467,10 +466,10 @@ void dq(Cidade listas, char id[], double r, bool verifica, char txtarq[])
                             {
                                 if (PontoInterno(x2, y2, x, y, r) == true)
                                 {
-                                    aux = getNext(aux);
+                                    aux = getPrevious(aux);
                                     fprintf(txt, "Cep: %s Id: %s X: %lf Y: %lf Fill: %s Stroke: %s\n\n", getCep(elementoq), getIdHidrante(elemento), getXH(elemento), getYH(elemento), getFillH(elemento), getStrokeH(elemento));
                                     removeElemento(listaq, elementoq);
-                                    aux = getPrevious(aux);
+                                    
                                 }
                             }
                         }
@@ -520,10 +519,9 @@ void dq(Cidade listas, char id[], double r, bool verifica, char txtarq[])
                                     if (PontoInterno(x2, y2, x, y, r) == true)
                                     {
                                         criaRetanguloQry(getXQ(elementoq), getYQ(elementoq), getWQ(elementoq), getHQ(elementoq), getSWQ(elementoq), getListaQRY(listas));
-                                        aux = getNext(aux);
+                                        aux = getPrevious(aux);
                                         fprintf(txt, "Cep: %s Id: %s X: %lf Y: %lf Fill: %s Stroke: %s\n\n", getCep(elementoq), getIdR(elemento), getXR(elemento), getYR(elemento), getFillR(elemento), getStokeR(elemento));
                                         removeElemento(listaq, elementoq);
-                                        aux = getPrevious(aux);
                                     }
                                 }
                             }
@@ -550,10 +548,9 @@ void dq(Cidade listas, char id[], double r, bool verifica, char txtarq[])
                                 {
                                     if (PontoInterno(x2, y2, x, y, r) == true)
                                     {
-                                        aux = getNext(aux);
+                                        aux = getPrevious(aux);
                                         fprintf(txt, "Cep: %s Id: %s X: %lf Y: %lf Fill: %s Stroke: %s\n\n", getCep(elementoq), getIdR(elemento), getXR(elemento), getYR(elemento), getFillR(elemento), getStokeR(elemento));
                                         removeElemento(listaq, elementoq);
-                                        aux = getPrevious(aux);
                                     }
                                 }
                             }
@@ -602,10 +599,9 @@ void dq(Cidade listas, char id[], double r, bool verifica, char txtarq[])
                                     if (PontoInterno(x2, y2, x, y, r) == true)
                                     {
                                         criaRetanguloQry(getXQ(elementoq), getYQ(elementoq), getWQ(elementoq), getHQ(elementoq), getSWQ(elementoq), getListaQRY(listas));
-                                        aux = getNext(aux);
+                                        aux = getPrevious(aux);
                                         fprintf(txt, "Cep: %s Id: %s X: %lf Y: %lf Fill: %s Stroke: %s\n\n", getCep(elementoq), getIdS(elemento), getXS(elemento), getYS(elemento), getFillS(elemento), getStrokeS(elemento));
                                         removeElemento(listaq, elementoq);
-                                        aux = getPrevious(aux);
                                     }
                                 }
                             }
@@ -632,10 +628,9 @@ void dq(Cidade listas, char id[], double r, bool verifica, char txtarq[])
                                 {
                                     if (PontoInterno(x2, y2, x, y, r) == true)
                                     {
-                                        aux = getNext(aux);
+                                        aux = getPrevious(aux);
                                         fprintf(txt, "Cep: %s Id: %s X: %lf Y: %lf Fill: %s Stroke: %s\n\n", getCep(elementoq), getIdS(elemento), getXS(elemento), getYS(elemento), getFillS(elemento), getStrokeS(elemento));
                                         removeElemento(listaq, elementoq);
-                                        aux = getPrevious(aux);
                                     }
                                 }
                             }
@@ -1045,7 +1040,7 @@ void iFormas(int j, double x, double y, Lista lista, char txt[]){
     FILE *fp;
     fp = fopen(txt,"a");
 
-    fprintf(txt,"i? %d %lf %lf\n",j,x,y);
+    fprintf(fp,"i? %d %lf %lf\n",j,x,y);
 
     while (node != NULL){
         elemento = getInfo(node);
@@ -1074,3 +1069,146 @@ void iFormas(int j, double x, double y, Lista lista, char txt[]){
     }
     
 }
+
+void pnt(int j, char stroke[], char fill[], Lista lista, char txt[]){
+    No node = getFirst(lista);
+    Info elemento;
+    
+    FILE *fp;
+    fp = fopen(txt,"a");
+
+    fprintf(fp,"pnt %d %s %s\n",j, stroke, fill);
+
+    while (node != NULL){
+        elemento = getInfo(node);
+        
+        if (j == getIdF(elemento)){
+            setStrokeF(elemento, stroke);
+            setFillF(elemento, fill);
+            fprintf(fp,"x: %lf y: %lf\n\n", getXF(elemento), getYF(elemento));
+            break;
+        }
+        
+
+        node = getNext(node);
+    }
+    fclose(fp);
+}
+
+void pntplus(int j, int k, char stroke[], char fill[], Lista lista, char txt[]){
+    No node = getFirst(lista), aux = getFirst(lista);
+    Info elemento, elemento1;
+    
+    FILE *fp;
+    fp = fopen(txt,"a");
+
+    fprintf(fp,"pnt* %d %d %s %s\n",j, k, stroke, fill);
+
+    while (node != NULL){
+        elemento = getInfo(node);
+        
+        if (j == getIdF(elemento)){
+            while (aux != NULL){
+                elemento1 = getInfo(aux);
+                if (k == getIdF(elemento1)){
+                    while (node != getNext(aux)){
+                        elemento = getInfo(node);
+                        setStrokeF(elemento, stroke);
+                        setFillF(elemento, fill);
+                        fprintf(fp,"x: %lf y: %lf\n", getXF(elemento), getYF(elemento));
+                        node = getNext(node);
+                    }
+                }   
+                aux = getNext(aux);
+            }
+        }
+
+        node = getNext(node);
+    }
+    fprintf(fp,"\n");
+    fclose(fp);
+}
+
+void delf(int j, Lista lista, char txt[]){
+    No node = getFirst(lista);
+    Info elemento;
+
+    FILE *fp;
+    fp = fopen(txt,"a");
+
+    fprintf(fp,"delf %d\n", j);
+
+    while (node != NULL){
+        elemento = getInfo(node);
+
+        if (j == getIdF(elemento)){
+            if ('c' == getForma(elemento)){
+                fprintf(fp,"id : %d forma : %c raio : %lf x : %lf y : %lf corb : %s corp : %s\n\n", getIdF(elemento), getForma(elemento), getRaioF(elemento),getXF(elemento), getYF(elemento), getStrokeF(elemento), getFillF(elemento));
+                node = getNext(node);
+                removeElemento(lista, elemento);
+            }
+            if ('r' == getForma(elemento)){
+                fprintf(fp,"id : %d forma : %c w : %lf h : %lf x : %lf y : %lf corb : %s corp : %s\n\n", getIdF(elemento), getForma(elemento), getWF(elemento), getHF(elemento),getXF(elemento), getYF(elemento), getStrokeF(elemento), getFillF(elemento));
+                node = getNext(node);
+                removeElemento(lista, elemento);
+            }
+            if ('t' == getForma(elemento)){
+                fprintf(fp,"id : %d forma : %c  x : %lf y : %lf texto : %s corb : %s corp : %s\n\n", getIdF(elemento), getForma(elemento), getXF(elemento), getYF(elemento), getTextoF(elemento), getStrokeF(elemento), getFillF(elemento));
+                node = getNext(node);
+                removeElemento(lista, elemento);
+            }
+            break;
+        }
+
+        node = getNext(node);
+    }
+    fclose(fp);
+}
+
+void delfplus(int j, int k, Lista lista, char txt[]){
+    No node = getFirst(lista), aux = getFirst(lista);
+    Info elemento, elemento1;
+
+    FILE *fp;
+    fp = fopen(txt,"a");
+
+    fprintf(fp,"delf %d\n", j);
+
+    while (node != NULL){
+        elemento = getInfo(node);
+            if (j == getIdF(elemento)){
+             while (aux != NULL){
+                elemento1 = getInfo(aux);
+
+                if (k == getIdF(elemento1)){
+                    while (node !=  aux){
+                        elemento = getInfo(node);
+
+                        if ('c' == getForma(elemento)){
+                            fprintf(fp,"id : %d forma : %c raio : %lf x : %lf y : %lf corb : %s corp : %s\n\n", getIdF(elemento), getForma(elemento), getRaioF(elemento),getXF(elemento), getYF(elemento), getStrokeF(elemento), getFillF(elemento));
+                            node = getPrevious(node);
+                            removeElemento(lista, elemento);
+                        }
+                        if ('r' == getForma(elemento)){
+                            fprintf(fp,"id : %d forma : %c w : %lf h : %lf x : %lf y : %lf corb : %s corp : %s\n\n", getIdF(elemento), getForma(elemento), getWF(elemento), getHF(elemento),getXF(elemento), getYF(elemento), getStrokeF(elemento), getFillF(elemento));
+                            node = getPrevious(node);
+                            removeElemento(lista, elemento);
+                        }
+                        if ('t' == getForma(elemento)){
+                            fprintf(fp,"id : %d forma : %c  x : %lf y : %lf texto : %s corb : %s corp : %s\n\n", getIdF(elemento), getForma(elemento), getXF(elemento), getYF(elemento), getTextoF(elemento), getStrokeF(elemento), getFillF(elemento));
+                            node = getPrevious(node);
+                            removeElemento(lista, elemento);
+                        }
+
+                        node = getNext(node);
+                    }
+                    
+                }
+                aux = getNext(aux); 
+            }
+        }
+
+        node = getNext(node);
+    }
+    fclose(fp);
+} 

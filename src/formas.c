@@ -142,6 +142,16 @@ char *getTextoF(Info elemento){
     return info->texto;
 }
 
+void setStrokeF(Info elemento, char stroke[]){
+    formasStruct* info = (formasStruct*) elemento;
+    strcpy(info->corb,stroke);
+}
+            
+void setFillF(Info elemento,char fill[]){
+    formasStruct* info = (formasStruct*) elemento;
+    strcpy(info->corp,fill);
+}
+
 void imprimeListaF(Lista l,char saida[]){
     No node = getFirst(l), aux = getLast(l);
     Info elemento;

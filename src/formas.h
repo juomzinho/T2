@@ -36,6 +36,10 @@ char *getStrokeF(Info elemento);
 
 char *getTextoF(Info elemento);
 
+void setStrokeF(Info elemento, char stroke[]);
+            
+void setFillF(Info elemento,char fill[]);
+
 void imprimeListaF(Lista l,char saida[]);
 
 #endif

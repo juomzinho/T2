@@ -76,13 +76,28 @@ void leituraQRY(char saida[] , char arquivotxt[],char qry[], Cidade cidade){
         /* QRY FORMAS */
 
         if(strcmp("o?",comando)==0){
-            fscanf(arq,"%d %d",def.j, def.k);
+            fscanf(arq,"%d %d", &def.j, &def.k);
             oFormas(def.j, def.k, getListaFormas(cidade), arquivotxt);
         }
 
         if(strcmp("i?",comando)==0){
-            fscanf(arq,"%d %lf %lf",def.j, def.x, def.y);
+            fscanf(arq,"%d %lf %lf", &def.j, &def.x, &def.y);
             iFormas(def.j, def.x, def.y, getListaFormas(cidade), arquivotxt);
+        }
+
+        if(strcmp("pnt",comando)==0){
+            fscanf(arq,"%d %s %s", &def.j, def.cstrk, def.cep);
+            pnt(def.j, def.cstrk, def.cep, getListaFormas(cidade), arquivotxt);
+        }
+
+        if(strcmp("pnt*",comando)==0){
+            fscanf(arq,"%d %d %s %s", &def.j, &def.k, def.cstrk, def.cep);
+            pntplus(def.j, def.k, def.cstrk, def.cep, getListaFormas(cidade), arquivotxt);
+        }
+
+        if(strcmp("delf",comando)==0){
+            fscanf(arq,"%d", &def.j);
+            delf(def.j, getListaFormas(cidade), arquivotxt);
         }
 
         strcpy(comando,"nada");

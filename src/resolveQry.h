@@ -42,4 +42,12 @@ void oFormas(int j, int k, Lista lista, char txt[]);
 
 void iFormas(int j, double x, double y, Lista lista, char txt[]);
 
+void pnt(int j, char stroke[], char fill[], Lista lista, char txt[]);
+
+void pntplus(int j, int k, char stroke[], char fill[], Lista lista, char txt[]);
+
+void delf(int j, Lista lista, char txt[]);
+
+void delfplus(int j, int k, Lista lista, char txt[]);
+
 #endif
