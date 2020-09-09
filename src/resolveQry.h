@@ -12,6 +12,11 @@ ela recebe dos dados da linha e a lista por parametro
 no fim ela insere a linha na lista*/
 void criaLinha(double x, double y, char cep[], Cidade listas);
 
+/* esta funcao aloca memoria e armazena os dados da area de um cep
+ela recebe dos dados da area e a lista por parametro 
+no fim ela insere a linha na lista*/
+void criaArea(double w, double h, double x, double y, Lista l);
+
 /* esta funcao aloca memoria e armazena os dados de um retangulo
 ela recebe dos dados do retangulo e a lista por parametro 
 no fim ela insere o retangulo na lista*/
@@ -100,6 +105,10 @@ ela recebe como parametro os dados do retangulo
 e o nome do arquivo svg junto ao diretório de saida*/
 void imprimeRetT(double x, double y, double w, double h, char sw[], char saida[]);
 
+/* esta funcao imprime a area do cep no arquivo svg
+ela recebe como parametro os dados da area
+e o nome do arquivo svg junto ao diretório de saida*/
+void imprimeArea(double x, double y,double w, double h,double area, char saida[]);
 
 /* esta funcao imprime uma retangulo com as borda cheia no arquivo svg
 ela recebe como parametro os dados do retangulo

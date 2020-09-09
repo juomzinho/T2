@@ -79,7 +79,7 @@ void insertBefore(Lista l, Info posicao, Info info){
             aux->anterior = no;   
             if (no->anterior==NULL){
                 lista->primeiro = no;
-            }                     
+            }                
         }
         aux = aux->proximo;
     }

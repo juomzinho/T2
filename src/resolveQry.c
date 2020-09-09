@@ -15,7 +15,7 @@
 typedef struct novas
 {
     char tipo, cep[20], sw[10];
-    double x, y, w, h, raio;
+    double x, y, w, h, area, raio;
 } structQry;
 
 double getYQRY(Info elemento)
@@ -42,6 +42,11 @@ double getHQRY(Info elemento)
     return info->h;
 }
 
+double getAreaQRY(Info elemento){
+    structQry *info = (structQry *)elemento;
+    return info->area;
+}
+
 double getRaioQRY(Info elemento)
 {
     structQry *info = (structQry *)elemento;
@@ -64,6 +69,19 @@ char *getSWQRY(Info elemento)
 {
     structQry *info = (structQry *)elemento;
     return info->sw;
+}
+
+void criaArea(double w, double h, double x, double y, Lista l){
+    structQry *area = (structQry *)malloc(sizeof(structQry));
+
+    area->area = w * h;
+    area->w = w;
+    area->h = h;
+    area->x = x;
+    area->y = y;
+    area->tipo = 'a';
+
+    insere(l, area);
 }
 
 void criaCirculo(Lista l, double raio, double x, double y)
@@ -362,6 +380,7 @@ void car(Cidade listas, double x, double y, double w, double h, char txtArq[]){
                         area = getWQ(elemento) * getYQ(elemento);
                         criaRetFormasQry(x,y,w,h,"1.0px",l,'s');
                         fprintf(txt, "Cep: %s Area: %lf\n", getCep(elemento), (getWQ(elemento) * getHQ(elemento)));
+                        criaArea(getWQ(elemento), getHQ(elemento),getXQ(elemento), getYQ(elemento), l);
                     }
                 }
             }
@@ -446,9 +465,10 @@ void dq(Cidade listas, char id[], double r, bool verifica, char txtarq[])
         {
             x = getXH(elemento);
             y = getYH(elemento);
+            Hidrante hidrante = hidranteLista(id,x,y,8,"blue","yellow","2.0px");
+            insertBefore(l,elemento,hidrante);
 
-            if (verifica == true)
-            {
+            if (verifica == true){
                 while (aux != NULL)
                 {
                     elementoq = getInfo(aux);
@@ -783,9 +803,36 @@ void imprimeQry(Lista l, char saida[])
             strcpy(def.sw, getSWQRY(elemento));
             imprimeRet(def.x, def.y, def.w, def.h, def.sw, saida);
         }
+        if (def.tipo == 'a'){
+            def.x = getXQRY(elemento);
+            def.y = getYQRY(elemento);
+            def.h = getHQRY(elemento);
+            def.w = getWQRY(elemento);
+            def.area = getAreaQRY(elemento);
+            imprimeArea(def.x,def.y,def.w,def.h,def.area, saida);
+        }
 
         node = getNext(node);
     }
+}
+
+void imprimeArea(double x, double y,double w, double h,double area, char saida[]){
+    double textX, textY;
+
+    textX = x + (w/2);
+    textY = y + (h/2);
+
+    FILE *arq;
+    arq = fopen(saida, "a");
+
+    if (arq == NULL){
+        printf("Erro ao abrir SVG!");
+        exit(1);
+    }
+    
+    fprintf(arq, "\t<text x=\"%lf\" y=\"%lf\">%lf</text>", textX, textY, area);
+
+    fclose(arq);
 }
 
 void imprimeLinha(double x, double y, char cep[], char saida[])

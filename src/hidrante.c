@@ -6,10 +6,11 @@
 
 typedef struct hidrante{
     char id[20], fill[20], strk[20], sw[10];
-    double x, y; 
+    double x, y;
+    int raio; 
 } infosH;
 
-void imprimeHidrante(double x, double y, char fill[], char stroke[], char strokeWidth[], char saida[]){
+void imprimeHidrante(double x, double y, int raio, char fill[], char stroke[], char strokeWidth[], char saida[]){
     FILE *arq;
     arq = fopen(saida,"a");
 
@@ -18,16 +19,17 @@ void imprimeHidrante(double x, double y, char fill[], char stroke[], char stroke
         exit(1);
     }
 
-    fprintf(arq,"\n\t<circle cx=\"%lf\" cy=\"%lf\" r=\"4\" fill=\"%s\" stroke=\"%s\" stroke-width=\"%s\"/>", x,y,fill,stroke,strokeWidth);
+    fprintf(arq,"\n\t<circle cx=\"%lf\" cy=\"%lf\" r=\"%d\" fill=\"%s\" stroke=\"%s\" stroke-width=\"%s\"/>", x,y,raio,fill,stroke,strokeWidth);
     fclose(arq);    
 }
 
-Hidrante hidranteLista(char id[], double x, double y, char fill[], char stroke[], char sw[]){
+Hidrante hidranteLista(char id[], double x, double y, int raio, char fill[], char stroke[], char sw[]){
     infosH* hidrante = (infosH*) malloc(sizeof(infosH));
 
     strcpy(hidrante->id,id);
     hidrante->x = x;
     hidrante->y = y;
+    hidrante->raio = raio;
     strcpy(hidrante->fill,fill);
     strcpy(hidrante->strk,stroke);
     strcpy(hidrante->sw,sw);
@@ -48,6 +50,11 @@ double getXH(Hidrante info){
 double getYH(Hidrante info){
     infosH* hidrante = (infosH*) info;
     return hidrante->y;
+}
+
+int getRaioH(Hidrante info){
+    infosH* hidrante = (infosH*) info;
+    return hidrante->raio;
 }
 
 char *getFillH(Hidrante info){
@@ -77,10 +84,14 @@ void imprimeListaH(Lista l,char saida[]){
         strcpy(def.id, getIdHidrante(elemento));
         def.x = getXH(elemento);
         def.y = getYH(elemento);
+        def.raio = getRaioH(elemento);
         strcpy(def.fill, getFillH(elemento));
         strcpy(def.strk, getStrokeH(elemento));
         strcpy(def.sw, getSWH(elemento));
-        imprimeHidrante(def.x, def.y, def.fill, def.strk, def.sw, saida);
+
+        printf("%lf %lf %d %s %s %s %s\n",def.x, def.y, def.raio, def.fill, def.strk, def.sw,saida);
+
+        imprimeHidrante(def.x, def.y, def.raio, def.fill, def.strk, def.sw, saida);
         
         node = getNext(node);
     } while (node!=getNext(aux));

@@ -131,8 +131,8 @@ void leituraGeo(char geo[],char saida[], Cidade cidade){
             if(strcmp("h",comando)==0){
                 if(cont.nh<nx.nh){
                     fscanf(arq,"%s %lf %lf", def.id, &def.x, &def.y);
-                    imprimeHidrante(def.x, def.y, ch.cfill, ch.cstrk, ch.sw, saida);
-                    hidrante = hidranteLista( def.id, def.x, def.y, ch.cfill, ch.cstrk, ch.sw);
+                    imprimeHidrante(def.x, def.y, 4, ch.cfill, ch.cstrk, ch.sw, saida);
+                    hidrante = hidranteLista( def.id, def.x, def.y, 4, ch.cfill, ch.cstrk, ch.sw);
                     insere(listas->listaH,hidrante);
                     cont.nh++;
                 }
