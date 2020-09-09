@@ -26,4 +26,10 @@ void imprimeCirculoQry(double x, double y, double raio, char saida[]);
 
 void imprimeQuadraQRY(double x, double y, double w, double h, char sw[], char saida[]);
 
+void imprimeRetT(double x, double y, double w, double h, char sw[], char saida[]);
+
+void imprimeRet(double x, double y, double w, double h, char sw[], char saida[]);
+
+void oFormas(int j, int k, Lista lista, char txt[]);
+
 #endif

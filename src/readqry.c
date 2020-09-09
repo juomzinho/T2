@@ -10,7 +10,6 @@
 #include "semaforo.h"
 #include "formas.h"
 #include "radio.h"
-#include "resolveQryFormas.h"
 
 struct Default{
     double x, y, w, h, r;
@@ -77,7 +76,7 @@ void leituraQRY(char saida[] , char arquivotxt[],char qry[], Cidade cidade){
 
         if(strcmp("o?",comando)==0){
             fscanf(arq,"%d %d",def.j, def.k);
-            oFormas(def.j, def.k, getListaFormas);
+            oFormas(def.j, def.k, getListaFormas, arquivotxt);
         }
 
 
