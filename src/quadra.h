@@ -11,7 +11,7 @@ void imprimeQuadra(char cep[], double x, double y, double w, double h, char fill
 
 /* esta funcao aloca espaço na memoria e armazena os dados da quadra
 e retorna o elemento criado*/
-Quadra quadraLista(char cep[], double x, double y, double w, double h, char fill[], char strk[], char sw[]);
+Quadra quadraLista(char cep[], double x, double y, double w, double h, char v[], char fill[], char strk[], char sw[]);
 
 /* esta funcao retorna o cep de uma quadra
 ela recebe o elemento onde a quadra esta
@@ -41,7 +41,9 @@ double getHQ(Quadra info);
 /* esta funcao retorna o preenchimento de uma quadra
 ela recebe o elemento onde a quadra esta
 armazenado como parametro */
-char *getFillQ(Quadra info);
+char *getFillQ(Quadra info); 
+
+char *getTipoQ(Quadra elemento);
 
 /* esta funcao retorna o borda de uma quadra
 ela recebe o elemento onde a quadra esta
@@ -62,6 +64,16 @@ double getAreaQuadra(Quadra info);
 ela recebe o elemento onde a quadra esta
 armazenado e o novo valor borda como parametro*/
 void setStokeQ(char cstrk[], Quadra elemento);
+
+/* esta funcao altera a preenchimento de uma quadra
+ela recebe o elemento onde a quadra esta
+armazenado e o novo valor preenchimento como parametro*/
+void setFillQ(char fill[],Quadra elemento);
+
+/* esta funcao altera a tipo de uma quadra para borda arredondada
+ela recebe o elemento onde a quadra esta
+armazenado e o novo valor preenchimento como parametro*/
+void setTipoQ(char v[], Quadra elemento);
 
 /* esta funcao percorre a lista de quadras,
 le as informacoes de cada elemento na lista,

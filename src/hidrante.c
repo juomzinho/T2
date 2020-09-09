@@ -89,7 +89,7 @@ void imprimeListaH(Lista l,char saida[]){
         strcpy(def.strk, getStrokeH(elemento));
         strcpy(def.sw, getSWH(elemento));
 
-        printf("%lf %lf %d %s %s %s %s\n",def.x, def.y, def.raio, def.fill, def.strk, def.sw,saida);
+       // printf("%lf %lf %d %s %s %s %s\n",def.x, def.y, def.raio, def.fill, def.strk, def.sw,saida);
 
         imprimeHidrante(def.x, def.y, def.raio, def.fill, def.strk, def.sw, saida);
         

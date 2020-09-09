@@ -7,11 +7,11 @@ typedef void* Semaforo;
 /* esta funcao imprime um semaforo no arquivo svg
 ela recebe como parametro os dados do semaforo
 e o nome do arquivo svg junto ao diretório de saida*/
-void imprimeSemaforo(double x, double y, char fill[], char stroke[], char strokeWidth[],char saida[]);
+void imprimeSemaforo(double x, double y, int w, int h, char fill[], char stroke[], char strokeWidth[],char saida[]);
 
 /* esta funcao aloca espaço na memoria e armazena os dados do semaforo
 e retorna o elemento criado*/
-Semaforo semaforoLista(char id[], double x, double y, char fill[], char strk[], char sw[]);
+Semaforo semaforoLista(char id[], double x, double y, int w, int h, char fill[], char strk[], char sw[]);
 
 /* esta funcao retorna o id de um semaforo
 ela recebe o elemento onde o semaforo esta

@@ -6,9 +6,10 @@
 typedef struct radio{
     char id[20], fill[10], stroke[10], sw[10];
     double x, y;
+    int raio;
 }radioStruct;
 
-void imprimeRadio(double x, double y, char fill[], char stroke[], char strokeWidth[],char saida[]){
+void imprimeRadio(double x, double y, int raio, char fill[], char stroke[], char strokeWidth[],char saida[]){
     FILE *arq;
     arq = fopen(saida,"a");
     if (arq==NULL){
@@ -16,17 +17,18 @@ void imprimeRadio(double x, double y, char fill[], char stroke[], char strokeWid
         exit(1);
     }
 
-    fprintf(arq,"\n\t<ellipse cx=\"%lf\" cy=\"%lf\" rx=\"7\" ry=\"7\" fill=\"%s\" stroke=\"%s\" stroke-width=\"%s\" />", x,y,fill, stroke, strokeWidth);
+    fprintf(arq,"\n\t<ellipse cx=\"%lf\" cy=\"%lf\" rx=\"%d\" ry=\"%d\" fill=\"%s\" stroke=\"%s\" stroke-width=\"%s\" />", x,y,raio,raio, fill, stroke, strokeWidth);
 
     fclose(arq);
 }
 
-Radio radioLista(char id[], double x, double y, char fill[], char strk[], char sw[]){
+Radio radioLista(char id[], double x, double y, int raio, char fill[], char strk[], char sw[]){
     radioStruct* radio = (radioStruct*) malloc(sizeof(radioStruct));
 
     strcpy(radio->id,id);
     radio->x = x;
     radio->y = y;
+    radio->raio = raio;
     strcpy(radio->fill,fill);
     strcpy(radio->stroke,strk);
     strcpy(radio->sw,sw);
@@ -64,6 +66,11 @@ char *getSWR(Info elemento){
     return info->sw;
 }
 
+int getRaioR(Info elemento){
+    radioStruct* info = (radioStruct*) elemento;
+    return info->raio;
+}
+
 
 void imprimeListaRB(Lista l, char saida[]){
     No node = getFirst(l), aux = getLast(l);
@@ -75,10 +82,11 @@ void imprimeListaRB(Lista l, char saida[]){
 
         def.x = getXR(elemento);
         def.y = getYR(elemento);
+        def.raio = getRaioR(elemento);
         strcpy(def.fill, getFillR(elemento));
         strcpy(def.stroke, getStokeR(elemento));
         strcpy(def.sw, getSWR(elemento));
-        imprimeRadio(def.x, def.y, def.fill, def.stroke, def.sw, saida);
+        imprimeRadio(def.x, def.y, def.raio, def.fill, def.stroke, def.sw, saida);
 
         node = getNext(node); 
     } while (node != getNext(aux));

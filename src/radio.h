@@ -7,11 +7,11 @@ typedef void* Radio;
 /* esta funcao imprime um radio-base no arquivo svg
 ela recebe como parametro os dados do radio-base
 e o nome do arquivo svg junto ao diretório de saida*/
-void imprimeRadio(double x, double y, char fill[], char stroke[], char strokeWidth[], char saida[]);
+void imprimeRadio(double x, double y, int raio, char fill[], char stroke[], char strokeWidth[], char saida[]);
 
 /* esta funcao aloca espaço na memoria e armazena os dados do radio-base
 e retorna o elemento criado*/
-Radio radioLista(char id[], double x, double y, char fill[], char strk[], char sw[]);
+Radio radioLista(char id[], double x, double y, int raio, char fill[], char strk[], char sw[]);
 
 /* esta funcao retorna o id de um radio-base
 ela recebe o elemento onde o radio-base esta

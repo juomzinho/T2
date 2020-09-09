@@ -74,12 +74,15 @@ void insertBefore(Lista l, Info posicao, Info info){
 
     while (aux!=NULL){
         if (getInfo(aux)==posicao){
+            no->proximo = aux;
             no->anterior = aux->anterior;
-            no->proximo = aux; 
-            aux->anterior = no;   
-            if (no->anterior==NULL){
+            aux->anterior = no;
+            if (no->anterior == NULL){
                 lista->primeiro = no;
-            }                
+            }else{
+                no->anterior->proximo = no;
+            }
+                 
         }
         aux = aux->proximo;
     }

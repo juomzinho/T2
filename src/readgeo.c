@@ -123,7 +123,7 @@ void leituraGeo(char geo[],char saida[], Cidade cidade){
                 if (cont.nq<nx.nq){
                     fscanf(arq,"%s %lf %lf %lf %lf",def.cep, &def.x, &def.y, &def.w, &def.h);
                     imprimeQuadra(def.cep, def.x, def.y, def.w, def.h, cq.cfill, cq.cstrk, cq.sw, saida);
-                    quadra = quadraLista(def.cep, def.x, def.y, def.w, def.h, cq.cfill, cq.cstrk, cq.sw);
+                    quadra = quadraLista(def.cep, def.x, def.y, def.w, def.h,"normal" ,cq.cfill, cq.cstrk, cq.sw);
                     insere(listas->listaQ,quadra);
                     cont.nq++;
                 }
@@ -140,8 +140,8 @@ void leituraGeo(char geo[],char saida[], Cidade cidade){
             if(strcmp("s",comando)==0){
                 if(cont.ns<nx.ns){
                     fscanf(arq,"%s %lf %lf", def.id, &def.x, &def.y);
-                    imprimeSemaforo( def.x, def.y, cs.cfill, cs.cstrk, cs.sw, saida);
-                    semaforo = semaforoLista(def.id, def.x, def.y, cs.cfill, cs.cstrk, cs.sw);
+                    imprimeSemaforo( def.x-2, def.y-5, 4, 10,cs.cfill, cs.cstrk, cs.sw, saida);
+                    semaforo = semaforoLista(def.id, def.x, def.y, 4, 10, cs.cfill, cs.cstrk, cs.sw);
                     insere(listas->listaS,semaforo);
                     cont.ns++;
                 }
@@ -149,8 +149,8 @@ void leituraGeo(char geo[],char saida[], Cidade cidade){
             if(strcmp("rb",comando)==0){
                 if(cont.nr<nx.nr){
                     fscanf(arq,"%s %lf %lf", def.id, &def.x, &def.y);
-                    imprimeRadio(def.x, def.y, cr.cfill, cr.cstrk, cr.sw, saida);
-                    radio = radioLista(def.id, def.x, def.y, cr.cfill, cr.cstrk, cr.sw);
+                    imprimeRadio(def.x, def.y,6, cr.cfill, cr.cstrk, cr.sw, saida);
+                    radio = radioLista(def.id, def.x, def.y, 6,cr.cfill, cr.cstrk, cr.sw);
                     insere(listas->listaRB,radio);
                     cont.nr++;
                 }

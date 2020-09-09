@@ -6,10 +6,10 @@
 
 typedef struct semaforo{
     char id[20], fill[10], stroke[10], sw[10];
-    double x,y;
+    double x,y,w,h;
 }semaforoInfos;
 
-void imprimeSemaforo(double x, double y, char fill[], char stroke[], char strokeWidth[],char saida[]){
+void imprimeSemaforo(double x, double y, int w, int h, char fill[], char stroke[], char strokeWidth[],char saida[]){
     FILE *arq;
     arq = fopen(saida,"a");
     if (arq==NULL){
@@ -17,17 +17,19 @@ void imprimeSemaforo(double x, double y, char fill[], char stroke[], char stroke
         exit(1);
     }
 
-    fprintf(arq,"\n\t<rect x=\"%lf\" y=\"%lf\" width=\"4\" height=\"10\" fill=\"%s\" stroke=\"%s\" stroke-width=\"%s\" />", x,y,fill, stroke, strokeWidth);
+    fprintf(arq,"\n\t<rect x=\"%lf\" y=\"%lf\" width=\"%d\" height=\"%d\" fill=\"%s\" stroke=\"%s\" stroke-width=\"%s\" />", x,y,w,h,fill, stroke, strokeWidth);
 
     fclose(arq);
 }
 
-Semaforo semaforoLista(char id[], double x, double y, char fill[], char strk[], char sw[]){
+Semaforo semaforoLista(char id[], double x, double y, int w, int h, char fill[], char strk[], char sw[]){
     semaforoInfos* semaforo = (semaforoInfos*) malloc(sizeof(semaforoInfos));
 
     strcpy(semaforo->id,id);
     semaforo->x = x;
     semaforo->y = y;
+    semaforo->w = w;
+    semaforo->h = h;
     strcpy(semaforo->fill,fill);
     strcpy(semaforo->stroke,strk);
     strcpy(semaforo->sw,sw);
@@ -65,6 +67,16 @@ char *getSWS(Info elemento){
     return info->sw;
 }
 
+int getWS(Info elemento){
+    semaforoInfos* info = (semaforoInfos*) elemento;
+    return info->w;
+}
+
+int getHS(Info elemento){
+    semaforoInfos* info = (semaforoInfos*) elemento;
+    return info->h;
+}
+
 void imprimeListaS(Lista l, char saida[]){
     No node = getFirst(l), aux = getLast(l);
     Info elemento;
@@ -75,10 +87,12 @@ void imprimeListaS(Lista l, char saida[]){
 
         def.x = getXS(elemento);
         def.y = getYS(elemento);
+        def.w = getWS(elemento);
+        def.h = getHS(elemento);
         strcpy(def.fill, getFillS(elemento));
         strcpy(def.stroke, getStrokeS(elemento));
         strcpy(def.sw, getSWS(elemento));
-        imprimeSemaforo(def.x,def.y,def.fill,def.stroke,def.sw,saida);
+        imprimeSemaforo(def.x,def.y,def.w,def.h, def.fill,def.stroke,def.sw,saida);
 
         node = getNext(node);  
     } while (node!=getNext(aux));

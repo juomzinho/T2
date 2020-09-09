@@ -121,21 +121,6 @@ void criaLinhaD(double x, double y, double area, Cidade listas){
     insere(l, linha);
 }
 
-void criaRetanguloQry(double x, double y, double w, double h, char sw[], Lista lista)
-{
-    structQry *quadra = (structQry *)malloc(sizeof(structQry));
-    ;
-
-    quadra->x = x;
-    quadra->y = y;
-    quadra->w = w;
-    quadra->h = h;
-    strcpy(quadra->sw, sw);
-    quadra->tipo = 'q';
-
-    insere(lista, quadra);
-}
-
 void crd(Cidade listas, char id[], char txtArq[])
 {
     Lista l;
@@ -149,7 +134,7 @@ void crd(Cidade listas, char id[], char txtArq[])
         exit(1);
     }
 
-    fprintf(txt,"crd? %s", id);
+    fprintf(txt,"crd? %s\n", id);
 
     l = getListaQuadra(listas);
     No node = getFirst(l), aux = getLast(l);
@@ -422,7 +407,6 @@ void cbq(Cidade listas, double x, double y, double raio, char cstrk[], char txta
                     if (PontoInterno(x2, y2, x, y, raio) == true){
                         setStokeQ(cstrk, elemento);
                         fprintf(txt, "\tCEP: %s\n\n", getCep(elemento));
-                        criaCirculo(getListaQRY(listas), raio, x, y);
                     }
                 }
             }
@@ -465,7 +449,7 @@ void dq(Cidade listas, char id[], double r, bool verifica, char txtarq[])
         {
             x = getXH(elemento);
             y = getYH(elemento);
-            Hidrante hidrante = hidranteLista(id,x,y,8,"blue","yellow","2.0px");
+            Hidrante hidrante = hidranteLista(id,x,y,6,"blue","yellow","1.0px");
             insertBefore(l,elemento,hidrante);
 
             if (verifica == true){
@@ -486,10 +470,10 @@ void dq(Cidade listas, char id[], double r, bool verifica, char txtarq[])
                             {
                                 if (PontoInterno(x2, y2, x, y, r) == true)
                                 {
-                                    criaRetanguloQry(getXQ(elementoq), getYQ(elementoq), getWQ(elementoq), getHQ(elementoq), getSWQ(elementoq), getListaQRY(listas));
-                                    aux = getPrevious(aux);
+                                    setStokeQ("olive",elementoq);
+                                    setFillQ("beige",elementoq);
+                                    setTipoQ("redondo",elementoq);
                                     fprintf(txt, "Cep: %s Id: %s X: %lf Y: %lf Fill: %s Stroke: %s\n\n", getCep(elementoq), getIdHidrante(elemento), getXH(elemento), getYH(elemento), getFillH(elemento), getStrokeH(elemento));
-                                    removeElemento(listaq, elementoq);
                                 }
                             }
                         }
@@ -552,6 +536,8 @@ void dq(Cidade listas, char id[], double r, bool verifica, char txtarq[])
             {
                 x = getXR(elemento);
                 y = getYR(elemento);
+                Radio radio = radioLista(id,x,y,8,"blue","yellow","1.0px");
+                insertBefore(l,elemento,radio);
 
                 if (verifica == true)
                 {
@@ -572,10 +558,10 @@ void dq(Cidade listas, char id[], double r, bool verifica, char txtarq[])
                                 {
                                     if (PontoInterno(x2, y2, x, y, r) == true)
                                     {
-                                        criaRetanguloQry(getXQ(elementoq), getYQ(elementoq), getWQ(elementoq), getHQ(elementoq), getSWQ(elementoq), getListaQRY(listas));
-                                        aux = getPrevious(aux);
+                                        setStokeQ("olive",elementoq);
+                                        setFillQ("beige",elementoq);
+                                        setTipoQ("redondo",elementoq);
                                         fprintf(txt, "Cep: %s Id: %s X: %lf Y: %lf Fill: %s Stroke: %s\n\n", getCep(elementoq), getIdR(elemento), getXR(elemento), getYR(elemento), getFillR(elemento), getStokeR(elemento));
-                                        removeElemento(listaq, elementoq);
                                     }
                                 }
                             }
@@ -636,6 +622,8 @@ void dq(Cidade listas, char id[], double r, bool verifica, char txtarq[])
             {
                 x = getXS(elemento);
                 y = getYS(elemento);
+                Semaforo semaforo = semaforoLista(id,x,y,6,12,"blue","yellow","1.0px");
+                insertBefore(l,elemento,semaforo);
 
                 if (verifica == true)
                 {
@@ -656,10 +644,10 @@ void dq(Cidade listas, char id[], double r, bool verifica, char txtarq[])
                                 {
                                     if (PontoInterno(x2, y2, x, y, r) == true)
                                     {
-                                        criaRetanguloQry(getXQ(elementoq), getYQ(elementoq), getWQ(elementoq), getHQ(elementoq), getSWQ(elementoq), getListaQRY(listas));
-                                        aux = getPrevious(aux);
+                                        setStokeQ("olive",elementoq);
+                                        setFillQ("beige",elementoq);
+                                        setTipoQ("redondo",elementoq);
                                         fprintf(txt, "Cep: %s Id: %s X: %lf Y: %lf Fill: %s Stroke: %s\n\n", getCep(elementoq), getIdS(elemento), getXS(elemento), getYS(elemento), getFillS(elemento), getStrokeS(elemento));
-                                        removeElemento(listaq, elementoq);
                                     }
                                 }
                             }
@@ -775,15 +763,6 @@ void imprimeQry(Lista l, char saida[])
             def.y = getYQRY(elemento);
             def.raio = getRaioQRY(elemento);
             imprimeCirculoQry(def.x, def.y, def.raio, saida);
-        }
-        if (def.tipo == 'q')
-        {
-            def.x = getXQRY(elemento);
-            def.y = getYQRY(elemento);
-            def.h = getHQRY(elemento);
-            def.w = getWQRY(elemento);
-            strcpy(def.sw, getSWQRY(elemento));
-            imprimeQuadraQRY(def.x, def.y, def.w, def.h, def.sw, saida);
         }
         if (def.tipo == 'n')
         {
@@ -914,22 +893,6 @@ void imprimeRet(double x, double y, double w, double h, char sw[], char saida[])
     }
 
     fprintf(arq, "\n\t<rect x=\"%lf\" y=\"%lf\" width=\"%lf\" height=\"%lf\" fill=\"none\" stroke=\"black\" stroke-width=\"%s\" />\n", x, y, w, h, sw);
-
-    fclose(arq);
-}
-
-void imprimeQuadraQRY(double x, double y, double w, double h, char sw[], char saida[])
-{
-    FILE *arq;
-    arq = fopen(saida, "a");
-
-    if (arq == NULL)
-    {
-        printf("Erro ao abrir SVG!");
-        exit(1);
-    }
-
-    fprintf(arq, "\n\t<rect x=\"%lf\" y=\"%lf\" width=\"%lf\" height=\"%lf\" fill=\"beige\" stroke=\"olive\" stroke-width=\"%s\" rx=\"20\"/>\n", x, y, w, h, sw);
 
     fclose(arq);
 }

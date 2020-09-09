@@ -108,9 +108,9 @@ void leituraQRY(char saida[] , char arquivotxt[],char qry[], Cidade cidade){
     imprimeListaQ(getListaQuadra(cidade), saida);
     imprimeListaS(getListaSemaforo(cidade), saida);
     imprimeListaF(getListaFormas(cidade), saida);
-    imprimeQry(getListaQRY(cidade), saida);
     imprimeListaRB(getListaRadio(cidade), saida);
     imprimeListaH(getListaHidrante(cidade), saida);
+    imprimeQry(getListaQRY(cidade), saida);
 
     fecharSvg(saida);
 
