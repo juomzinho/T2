@@ -17,12 +17,13 @@ void imprimeQuadra(char cep[], double x, double y, double w, double h, char fill
         exit(1);
     }
 
-    // double textX, textY;
+    double textX, textY;
 
-    // textX = x + (w/2);
-    // textY = y + (h/2);
+    textX = x + (w/2);
+    textY = y + (h/2);
 
     fprintf(arq,"\n\t<rect x=\"%lf\" y=\"%lf\" width=\"%lf\" height=\"%lf\" fill=\"%s\" stroke=\"%s\" stroke-width=\"%s\"/>", x,y,w,h, fill, stroke, strokeWidth);
+    fprintf(arq,"\n\t<text x=\"%lf\" y=\"%lf\" fill=\"%s\" stroke=\"%s\">%s</text>", textX, textY,fill, stroke, cep);
 
     fclose(arq);
 }

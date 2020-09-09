@@ -125,6 +125,13 @@ void crd(Cidade listas, char id[], char txtArq[])
 
     FILE *txt;
     txt = fopen(txtArq, "a");
+    if (txt == NULL)
+    {
+        printf("erro ao abrir txt!\n");
+        exit(1);
+    }
+
+    fprintf(txt,"crd? %s", id);
 
     l = getListaQuadra(listas);
     No node = getFirst(l), aux = getLast(l);
@@ -198,7 +205,7 @@ void crd(Cidade listas, char id[], char txtArq[])
 
             if (strcmp(getIdR(elemento), id) == 0)
             {
-                fprintf(txt, "x: %lf y: %lf Radio Base\n\n", getXR(elemento), getYR(elemento));
+                fprintf(txt, "x: %lf y: %lf Rádio-Base\n\n", getXR(elemento), getYR(elemento));
                 verifica = true;
                 break;
             }
@@ -223,6 +230,13 @@ void del(Cidade listas, char id[], char txtarq[])
 
     FILE *txt;
     txt = fopen(txtarq, "a");
+    if (txt == NULL)
+    {
+        printf("erro ao abrir txt!\n");
+        exit(1);
+    }
+
+    fprintf(txt,"del %s\n",id);
 
     l = getListaQuadra(listas);
     No node = getFirst(l), aux = getLast(l);
@@ -328,7 +342,13 @@ void car(Cidade listas, double x, double y, double w, double h, char txtArq[]){
 
     FILE *txt;
     txt = fopen(txtArq,"a");
+    if (txt == NULL)
+    {
+        printf("erro ao abrir txt!\n");
+        exit(1);
+    }
 
+    fprintf(txt,"car %lf %lf %lf %lf\n",x,y,w,h);
 
     while (node != NULL){
         elemento = getInfo(node);
@@ -341,7 +361,6 @@ void car(Cidade listas, double x, double y, double w, double h, char txtArq[]){
                     if (PontoInternoRet(x2,y2,x,y,h,w)==true){
                         area = getWQ(elemento) * getYQ(elemento);
                         criaRetFormasQry(x,y,w,h,"1.0px",l,'s');
-                        criaLinhaD(x,y,area,listas);
                         fprintf(txt, "Cep: %s Area: %lf\n", getCep(elemento), (getWQ(elemento) * getHQ(elemento)));
                     }
                 }
@@ -349,11 +368,11 @@ void car(Cidade listas, double x, double y, double w, double h, char txtArq[]){
         } 
         node = getNext(node);
     }
-    fprintf(txt, "Area Total: %lf\n", area);
+    criaLinhaD(x,y,area,listas);
+    fprintf(txt, "Area Total: %lf\n\n", area);
 }
 
-void cbq(Cidade listas, double x, double y, double raio, char cstrk[], char txtarq[])
-{
+void cbq(Cidade listas, double x, double y, double raio, char cstrk[], char txtarq[]){
     Lista lista = getListaQuadra(listas);
     No node = getFirst(lista);
     Info elemento;
@@ -364,8 +383,10 @@ void cbq(Cidade listas, double x, double y, double raio, char cstrk[], char txta
     if (txt == NULL)
     {
         printf("erro ao abrir txt!\n");
-        exit(0);
+        exit(1);
     }
+
+    fprintf(txt,"cbq %lf %lf %lf %s\n",x,y,raio,cstrk);
 
     while (node != NULL)
     {
@@ -376,16 +397,13 @@ void cbq(Cidade listas, double x, double y, double raio, char cstrk[], char txta
         y1 = getYQ(elemento);
         y2 = getYQ(elemento) + getHQ(elemento);
 
-        if (PontoInterno(x1, y1, x, y, raio) == true)
-        {
-            if (PontoInterno(x1, y2, x, y, raio) == true)
-            {
-                if (PontoInterno(x2, y1, x, y, raio) == true)
-                {
-                    if (PontoInterno(x2, y2, x, y, raio) == true)
-                    {
+        if (PontoInterno(x1, y1, x, y, raio) == true){
+            if (PontoInterno(x1, y2, x, y, raio) == true){
+                if (PontoInterno(x2, y1, x, y, raio) == true){
+                    if (PontoInterno(x2, y2, x, y, raio) == true){
                         setStokeQ(cstrk, elemento);
                         fprintf(txt, "\tCEP: %s\n\n", getCep(elemento));
+                        criaCirculo(getListaQRY(listas), raio, x, y);
                     }
                 }
             }
@@ -403,6 +421,18 @@ void dq(Cidade listas, char id[], double r, bool verifica, char txtarq[])
 
     FILE *txt;
     txt = fopen(txtarq, "a");
+      if (txt == NULL){
+        printf("erro ao abrir txt!\n");
+        exit(1);
+    }
+
+    if (verifica == true){
+        fprintf(txt,"dq # %s %lf\n", id, r);
+    }else{
+        fprintf(txt,"dq %s %lf\n", id, r);
+    }
+    
+    
 
     l = getListaHidrante(listas);
     No node = getFirst(l), aux = getFirst(listaq);
@@ -444,7 +474,9 @@ void dq(Cidade listas, char id[], double r, bool verifica, char txtarq[])
                             }
                         }
                     }
-                    aux = getNext(aux);
+                    if(aux!=NULL){
+                        aux = getNext(aux);
+                    }
                 }
             }
             else
@@ -474,7 +506,9 @@ void dq(Cidade listas, char id[], double r, bool verifica, char txtarq[])
                             }
                         }
                     }
-                    aux = getNext(aux);
+                    if(aux!=NULL){
+                        aux = getNext(aux);
+                    }
                 }
             }
 
@@ -526,7 +560,9 @@ void dq(Cidade listas, char id[], double r, bool verifica, char txtarq[])
                                 }
                             }
                         }
-                        aux = getNext(aux);
+                        if(aux!=NULL){
+                            aux = getNext(aux);
+                        }
                     }
                 }
                 else
@@ -555,7 +591,9 @@ void dq(Cidade listas, char id[], double r, bool verifica, char txtarq[])
                                 }
                             }
                         }
-                        aux = getNext(aux);
+                        if(aux!=NULL){
+                            aux = getNext(aux);
+                        }
                     }
                 }
                 v = true;
@@ -606,7 +644,9 @@ void dq(Cidade listas, char id[], double r, bool verifica, char txtarq[])
                                 }
                             }
                         }
-                        aux = getNext(aux);
+                        if(aux!=NULL){
+                            aux = getNext(aux);
+                        }
                     }
                 }
                 else
@@ -631,11 +671,14 @@ void dq(Cidade listas, char id[], double r, bool verifica, char txtarq[])
                                         aux = getPrevious(aux);
                                         fprintf(txt, "Cep: %s Id: %s X: %lf Y: %lf Fill: %s Stroke: %s\n\n", getCep(elementoq), getIdS(elemento), getXS(elemento), getYS(elemento), getFillS(elemento), getStrokeS(elemento));
                                         removeElemento(listaq, elementoq);
+                                        
                                     }
                                 }
                             }
                         }
-                        aux = getNext(aux);
+                        if(aux!=NULL){
+                            aux = getNext(aux);
+                        }
                     }
                 }
 
@@ -776,7 +819,7 @@ void imprimeLinhaD(double x, double y, double area, char saida[])
 
     fprintf(arq, "\t<line x1=\"%lf\" y1=\"%lf\" x2=\"%lf\" y2=\"0\" stroke=\"black\" stroke-width=\"2\"/>\n", x, y, x);
     x = x + 2;
-    fprintf(arq, "\t<text x=\"%lf\" y=\"10\">%lf</text>", x, area);
+    fprintf(arq, "\t<text x=\"%lf\" y=\"10\">%lf</text>\n", x, area);
 
     fclose(arq);
 }
@@ -792,7 +835,7 @@ void imprimeCirculoQry(double x, double y, double raio, char saida[])
         exit(1);
     }
 
-    fprintf(arq, "\t<circle cx=\"%lf\" cy=\"%lf\" r=\"%lf\" fill=\"none\" stroke=\"black\" stroke-width=\"1.0px\"/>", x, y, raio);
+    fprintf(arq, "\t<circle cx=\"%lf\" cy=\"%lf\" r=\"%lf\" fill=\"none\" stroke=\"black\" stroke-width=\"1.0px\"/>\n", x, y, raio);
 
     fclose(arq);
 }
@@ -807,7 +850,7 @@ void imprimeRetT(double x, double y, double w, double h, char sw[], char saida[]
         exit(1);
     }
 
-    fprintf(arq, "\n\t<rect x=\"%lf\" y=\"%lf\" width=\"%lf\" height=\"%lf\" fill=\"nonde\" stroke=\"black\" stroke-width=\"%s\" stroke-dasharray=\"5\"/>", x, y, w, h, sw);
+    fprintf(arq, "\n\t<rect x=\"%lf\" y=\"%lf\" width=\"%lf\" height=\"%lf\" fill=\"nonde\" stroke=\"black\" stroke-width=\"%s\" stroke-dasharray=\"5\"/>\n", x, y, w, h, sw);
 
     fclose(arq);
 }
@@ -823,7 +866,7 @@ void imprimeRet(double x, double y, double w, double h, char sw[], char saida[])
         exit(1);
     }
 
-    fprintf(arq, "\n\t<rect x=\"%lf\" y=\"%lf\" width=\"%lf\" height=\"%lf\" fill=\"none\" stroke=\"black\" stroke-width=\"%s\" />", x, y, w, h, sw);
+    fprintf(arq, "\n\t<rect x=\"%lf\" y=\"%lf\" width=\"%lf\" height=\"%lf\" fill=\"none\" stroke=\"black\" stroke-width=\"%s\" />\n", x, y, w, h, sw);
 
     fclose(arq);
 }
@@ -839,7 +882,7 @@ void imprimeQuadraQRY(double x, double y, double w, double h, char sw[], char sa
         exit(1);
     }
 
-    fprintf(arq, "\n\t<rect x=\"%lf\" y=\"%lf\" width=\"%lf\" height=\"%lf\" fill=\"beige\" stroke=\"olive\" stroke-width=\"%s\" rx=\"20\"/>", x, y, w, h, sw);
+    fprintf(arq, "\n\t<rect x=\"%lf\" y=\"%lf\" width=\"%lf\" height=\"%lf\" fill=\"beige\" stroke=\"olive\" stroke-width=\"%s\" rx=\"20\"/>\n", x, y, w, h, sw);
 
     fclose(arq);
 }
@@ -1118,6 +1161,7 @@ void pntplus(int j, int k, char stroke[], char fill[], Lista lista, char txt[]){
                         fprintf(fp,"x: %lf y: %lf\n", getXF(elemento), getYF(elemento));
                         node = getNext(node);
                     }
+                    break;
                 }   
                 aux = getNext(aux);
             }
@@ -1202,7 +1246,7 @@ void delfplus(int j, int k, Lista lista, char txt[]){
 
                         node = getNext(node);
                     }
-                    
+                    break;
                 }
                 aux = getNext(aux); 
             }
