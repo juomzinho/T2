@@ -41,6 +41,7 @@ void leituraQRY(char saida[] , char arquivotxt[],char qry[], Cidade cidade){
 
         if(strcmp("car",comando)==0){
             fscanf(arq,"%lf %lf %lf %lf",&def.x, &def.y, &def.w, &def.h);
+            car(cidade, def.x, def.y, def.w, def.h, arquivotxt);
         }
 
         if(strcmp("crd?",comando)==0){
@@ -76,9 +77,13 @@ void leituraQRY(char saida[] , char arquivotxt[],char qry[], Cidade cidade){
 
         if(strcmp("o?",comando)==0){
             fscanf(arq,"%d %d",def.j, def.k);
-            oFormas(def.j, def.k, getListaFormas, arquivotxt);
+            oFormas(def.j, def.k, getListaFormas(cidade), arquivotxt);
         }
 
+        if(strcmp("i?",comando)==0){
+            fscanf(arq,"%d %lf %lf",def.j, def.x, def.y);
+            iFormas(def.j, def.x, def.y, getListaFormas(cidade), arquivotxt);
+        }
 
         strcpy(comando,"nada");
     }

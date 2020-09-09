@@ -122,8 +122,6 @@ double getHF(Info elemento){
     return info->h;
 }
 
-
-
 double getRaioF(Info elemento){
     formasStruct* info = (formasStruct*) elemento;
     return info->raio;
