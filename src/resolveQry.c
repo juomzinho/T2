@@ -362,7 +362,7 @@ void car(Cidade listas, double x, double y, double w, double h, char txtArq[]){
             if (PontoInternoRet(x1,y2,x,y,h,w)==true){
                 if (PontoInternoRet(x2,y1,x,y,h,w)==true){
                     if (PontoInternoRet(x2,y2,x,y,h,w)==true){
-                        area = getWQ(elemento) * getYQ(elemento);
+                        area += getWQ(elemento) * getYQ(elemento);
                         criaRetFormasQry(x,y,w,h,"1.0px",l,'s');
                         fprintf(txt, "Cep: %s Area: %lf\n", getCep(elemento), (getWQ(elemento) * getHQ(elemento)));
                         criaArea(getWQ(elemento), getHQ(elemento),getXQ(elemento), getYQ(elemento), l);
