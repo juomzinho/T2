@@ -86,7 +86,7 @@ int main(int argc, char *argv[]){
 
         if (qry!=NULL){       
             arqqry = (char *)malloc((strlen(qry)+strlen(path)+2)*sizeof(char));
-            sprintf(arqqry,"%s%s",path,qry);
+            sprintf(arqqry,"%s/%s",path,qry);
         }
     }
     else{
